@@ -1,0 +1,36 @@
+<cms:editable name='grp_col1' type='group' label='Column 1' order='1' collapsed='0'>
+    <cms:editable name='col1_heading' label='Column Heading' type='text' order='1' />
+    <cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+</cms:editable>
+
+<cms:editable name='grp_col2' type='group' label='Column 2' order='2' collapsed='0'>
+    <cms:editable name='col2_heading' label='Column Heading' type='text' order='1' />
+
+    <cms:repeatable name='links1' label='Links' order='2'>
+        <cms:editable name='item_link_text' type='text' label='Text' />
+        <cms:editable name='item_link' type='text' label='Link' />
+        <cms:editable name='item_new_window' type='checkbox' label='New Window?' col_width='120' opt_values='Yes=yes' />
+    </cms:repeatable>
+</cms:editable>
+
+<cms:editable name='grp_col3' type='group' label='Column 3' order='3' collapsed='0'>
+    <cms:editable name='col3_heading' label='Column Heading' type='text' order='1' />
+
+    <cms:repeatable name='links2' label='Links' order='2'>
+        <cms:editable name='item_link_text' type='text' label='Text' />
+        <cms:editable name='item_link' type='text' label='Link' />
+        <cms:editable name='item_new_window' type='checkbox' label='New Window?' col_width='120' opt_values='Yes=yes' />
+    </cms:repeatable>
+</cms:editable>
+
+<cms:editable name='grp_col4' type='group' label='Column 4' order='4' collapsed='0'>
+    <cms:repeatable name='social_icons' label='Social Icons' order='1'>
+        <cms:editable name='item_icon' type='icon' width='32' label='Icon' col_width='120' />
+        <cms:editable name='item_link' type='text' label='Link' />
+        <cms:editable name='item_new_window' type='checkbox' label='New Window?' col_width='120' opt_values='Yes=yes' />
+    </cms:repeatable>
+
+    <cms:editable name='footnote' label='Footnote' type='textarea' height='60' order='2' />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

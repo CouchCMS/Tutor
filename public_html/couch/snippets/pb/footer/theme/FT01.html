@@ -1,0 +1,77 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class /> footer uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:0,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-2-5@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <h4 class="el-title uk-text-left uk-margin-remove-bottom uk-h5" data-uk-scrollspy-class><span></span><cms:show col1_heading /></h4>
+                            <div class="el-body uk-text-left uk-margin-top uk-margin-remove-bottom uk-width-large uk-margin-auto-right uk-text-small uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-column-2 uk-grid-item-match uk-width-expand@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <div class="el-icon-blocks">
+                                <div class="uk-text-left">
+                                    <ul class="el-icon-blocks-items uk-grid-match uk-child-width-1-1 uk-child-width-1-1@m uk-grid-large uk-flex-left" data-uk-grid>
+                                        <li>
+                                            <div class="el-icon-blocks-item item-0 uk-panel uk-margin-remove-first-child uk-width-expand@m uk-text-left" data-uk-scrollspy-class>
+                                                <h4 class="el-icon-blocks-title uk-h5 uk-margin-remove-bottom"><span></span><cms:show col2_heading /></h4>
+                                                <div class="el-icon-blocks-list uk-margin-top uk-margin-remove-bottom uk-text-small">
+                                                    <ul class="uk-child-width-1-1@m uk-grid-xsmall uk-text-left" data-uk-grid>
+                                                        <cms:if "<cms:not "<cms:is_empty_repeatable 'links1' />"/>"> 
+                                                            <li>
+                                                                <cms:if "<cms:strlen links_heading1 />"><cms:show links_heading1 />: </cms:if>
+                                                                <cms:set sep='' />
+                                                                <cms:show_repeatable 'links1'><cms:show sep /> <a href="<cms:show item_link />"<cms:if item_new_window> target="_blank"</cms:if>><cms:show item_link_text /></a><cms:set sep=',' scope='parent' /></cms:show_repeatable> 
+                                                            </li>
+                                                        </cms:if>
+                                                        <cms:if "<cms:not "<cms:is_empty_repeatable 'links2' />"/>">
+                                                            <li>
+                                                                <cms:if "<cms:strlen links_heading2 />"><cms:show links_heading2 />: </cms:if>
+                                                                <cms:set sep='' />
+                                                                <cms:show_repeatable 'links2'><cms:show sep /> <a href="<cms:show item_link />"<cms:if item_new_window> target="_blank"</cms:if>><cms:show item_link_text /></a><cms:set sep=',' scope='parent' /></cms:show_repeatable> 
+                                                            </li>
+                                                        </cms:if>
+                                                        <cms:if "<cms:not "<cms:is_empty_repeatable 'links3' />"/>">
+                                                            <li>
+                                                                <cms:if "<cms:strlen links_heading3 />"><cms:show links_heading3 />: </cms:if>
+                                                                <cms:set sep='' />
+                                                                <cms:show_repeatable 'links3'><cms:show sep /> <a href="<cms:show item_link />"<cms:if item_new_window> target="_blank"</cms:if>><cms:show item_link_text /></a><cms:set sep=',' scope='parent' /></cms:show_repeatable> 
+                                                            </li>
+                                                        </cms:if>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-column-3 uk-grid-item-match uk-width-expand@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <div class="el-social uk-margin-remove-bottom" data-uk-scrollspy-class>
+                                <ul class="uk-flex-right@m uk-flex-left uk-flex-middle uk-grid-small" data-uk-grid>
+                                    <cms:show_repeatable 'social_icons'>
+                                        <li><a class="uk-icon-button uk-button-primary" href="<cms:show item_link />"<cms:if item_new_window> target="_blank"</cms:if> style="width: 40px;height: 40px"><span data-uk-icon="icon: <cms:show item_icon />;  ratio: 1.1;" style="width: 22px;height: 22px"></span></a></li>
+                                    </cms:show_repeatable>
+                                </ul>
+                            </div>
+                            <div class="el-icon-list uk-text-right@m uk-text-left uk-margin-top uk-margin-remove-bottom uk-text-small uk-text-muted" data-uk-scrollspy-class>
+                                <ul class="el-icon-list-items uk-text-left uk-text-right@m uk-child-width-1-1@m uk-flex-left uk-grid-small" data-uk-grid>
+                                    <li>
+                                        <cms:nl2br><cms:show footnote /></cms:nl2br>                  
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

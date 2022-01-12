@@ -1,0 +1,14 @@
+<cms:repeatable name='items' label='Items' stacked_layout='1' order='1'>
+    <cms:editable name='item_title' type='text' label='Counter' validator='non_negative_integer' />
+    <cms:editable name='item_body' type='textarea' height='80' label='Body' />
+</cms:repeatable>
+
+<cms:editable name='title' label='Title' type='textarea' height='60' order='2' required='1' />
+
+<cms:editable name='row_buttons' type='row' label='Button' order='3' collapsed='0'>
+    <cms:editable name='button_text' type='text' label='Button Text' class='col-xs-4 col-md-2' />
+    <cms:editable name='button_link' type='text' label='Link' class='col-xs-4 col-md-2' />
+    <cms:editable name='button_target' label='Target' type='dropdown' opt_values='Same Window=default | New Window=new_window | Scroll To=scroll_to' opt_selected='default' class='col-xs-4 col-md-2' />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

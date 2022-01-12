@@ -1,0 +1,33 @@
+<cms:if k_success>
+    <cms:pb_process_form />
+
+    <cms:if k_success>
+        <cms:send_mail
+            from=form_email_from
+            to=form_email_to
+            reply_to=form_email_reply_to
+            bcc=form_email_bcc
+            subject=form_email_subject
+            debug="<cms:if form_email_debug>1</cms:if>"><cms:show form_email_message /></cms:send_mail>
+
+        <cms:set_flash name="pb_form_<cms:show k_cur_form />_submit_success" value='1' />
+        <cms:redirect pb_form_link />                    
+    </cms:if>    
+</cms:if>
+
+<cms:if form_success_action eq 'show_message'>    
+    <cms:set submit_success="<cms:get_flash "pb_form_<cms:show k_cur_form />_submit_success" />" />
+    <cms:if submit_success>
+        <div class="uk-alert-success uk-width-1-1" data-uk-alert>
+            <a class="uk-alert-close" data-uk-close></a>
+            <div><cms:nl2p><cms:show form_success_message /></cms:nl2p></div>
+        </div>
+    </cms:if>
+</cms:if>
+
+<cms:if k_error && "<cms:strlen form_error_message />">
+    <div class="uk-alert-danger uk-width-1-1" data-uk-alert>
+        <a class="uk-alert-close" data-uk-close></a>
+        <p><cms:show form_error_message /></p>
+    </div>
+</cms:if>

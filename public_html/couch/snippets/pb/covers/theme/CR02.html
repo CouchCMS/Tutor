@@ -1,0 +1,44 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class /> tutor uk-position-relative uk-light uk-background-cover uk-background-center-center uk-background-norepeat uk-background-primary" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}" data-uk-img data-src="<cms:show k_site_link />uploads/image/tutor/covers/header-background.jpg">
+    <div class="el-section-separator-bottom underneath uk-position-bottom uk-visible@m" style="background-image: url(&quot;<cms:show k_site_link />uploads/file/wave.svg&quot;);background-size: 100% 144px;height: 144px;background-repeat-y: no-repeat;pointer-events: none"></div>
+    <div class="el-section-separator-bottom-mobile underneath uk-position-bottom uk-hidden@m" style="background-image: url(&quot;<cms:show k_site_link />uploads/file/wave.svg&quot;);background-size: 100% 90px;height: 90px;background-repeat-y: no-repeat;pointer-events: none"></div>
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex" data-uk-height-viewport="offset-top: true">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <h1 class="el-title uk-text-center uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-heading-primary" data-uk-scrollspy-class="uk-animation-slide-top"><span></span><cms:show title /></h1>
+                            <div class="el-body uk-text-center uk-margin-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-text-large uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class="uk-animation-slide-top">
+                                <cms:show body />         
+                            </div>
+                            <div class="el-buttons uk-margin-medium-top uk-margin-remove-bottom" data-uk-scrollspy-class="uk-animation-slide-top">
+                                <div class="uk-flex-middle uk-child-width-auto uk-grid-small uk-flex-center" data-uk-grid>
+                                    <div>
+                                        <a class="uk-button uk-button-danger uk-button-large" href="<cms:show button_link />"<cms:if button_target eq 'new_window'> target="_blank"<cms:else_if button_target eq 'scroll_to' /> data-uk-scroll</cms:if>>
+                                        <cms:show button_text /></a>
+                                    </div>
+                                    <cms:if show_second_button>
+                                        <div>
+                                            <a class="uk-button uk-button-default uk-button-large" href="<cms:show button2_link />"<cms:if button2_target eq 'new_window'> target="_blank"<cms:else_if button2_target eq 'scroll_to' /> data-uk-scroll</cms:if>>
+                                            <cms:show button2_text /></a>
+                                        </div>
+                                    </cms:if>
+                                </div>
+                            </div>
+                            <div class="el-image uk-text-center uk-margin-large-top uk-margin-bottom uk-position-relative" data-uk-scrollspy-class="uk-animation-slide-bottom" data-uk-lightbox="toggle: a.el-popup-link">
+                                <cms:if image_show_video>
+                                    <a class="el-popup-link" href="<cms:show image_link />">
+                                        <img src="<cms:show image />" alt="<cms:show image_alt />">
+                                        <span class="video-play-button"><span></span></span>
+                                    </a>
+                                 <cms:else />
+                                    <img src="<cms:show image />" alt="<cms:show image_alt />">
+                                 </cms:if>                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

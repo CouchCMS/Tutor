@@ -1,0 +1,52 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-center uk-margin-remove-bottom uk-width-xlarge uk-margin-auto" data-uk-scrollspy-class="uk-animation-slide-top"><span></span><cms:show title /></h2>
+                            <div class="el-body uk-text-center uk-margin-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-text-lead uk-column-1-1@m" data-uk-scrollspy-class="uk-animation-slide-top">
+                                <cms:show body />            
+                            </div>
+                            <div class="el-image-blocks gallery">
+                                <div class="uk-text-center uk-margin-large-top uk-margin-remove-bottom"<cms:if items_link_open_in eq 'popup'> data-uk-lightbox="toggle: a.el-popup-link;animation: <cms:show items_link_popup_animation />"</cms:if>>
+                                    <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
+                                        <ul class="el-image-blocks-items uk-grid-match uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-child-width-1-4@xl uk-grid-small uk-flex-center" data-uk-grid >
+                                            <cms:show_repeatable 'items' startcount='0'>
+                                                <li class="el-image-blocks-item item-<cms:show k_count /> uk-transition-toggle">
+                                                    <div class="el-image-blocks-unit uk-grid-item-match">
+                                                        <div class="el-image-blocks-unit-layout uk-flex-column uk-cover-container uk-grid-item-match" data-uk-scrollspy-class>
+                                                            <div class="el-image-blocks-image-component uk-grid-item-match uk-width-1-1">
+                                                                <div class="el-trans uk-grid-item-match">
+                                                                    <div class="el-anim uk-grid-item-match">
+                                                                        <div class="el-sizer uk-grid-item-match uk-cover-container uk-flex-middle"  data-aspect="0.55">
+                                                                            <div class="el-image-blocks-image image uk-position-cover uk-background-cover uk-transition-scale-up uk-transform-origin-center-center uk-transition-opaque el-background-image uk-background-<cms:show item_image_position />" data-uk-img data-src="<cms:show item_image />"><img src="<cms:show item_image />" alt="<cms:show item_image_alt />" /></div>
+                                                                            <div class="el-image-blocks-image-contents uk-panel uk-margin-remove-first-child uk-text-center uk-tile uk-tile-xsmall">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="el-image-blocks-text-component uk-width-expand uk-grid-item-match uk-tile uk-tile-xsmall uk-padding-remove-left uk-padding-remove-right uk-cover-container">
+                                                                <div class="el-image-blocks-text-contents uk-panel uk-margin-remove-first-child uk-text-left">
+                                                                    <h4 class="el-image-blocks-title uk-h5"><span></span><cms:show item_title /></h4>
+                                                                </div>
+                                                            </div>
+                                                            <cms:if "<cms:not "<cms:strlen item_link />" />" && items_link_default_to_image><cms:set item_link=item_image /></cms:if>
+                                                            <cms:if "<cms:strlen item_link />"><a class="el-image-blocks-link-cover <cms:if items_link_open_in eq 'popup'>el-popup-link </cms:if>uk-position-cover uk-position-z-index" href="<cms:show item_link />"<cms:if item_popup_type ne 'default'> data-type="<cms:show item_popup_type />"</cms:if> data-caption="<cms:show item_title />"<cms:if items_link_open_in eq 'new'> target="_blank"</cms:if>></a></cms:if>                                                                                                            
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </cms:show_repeatable>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

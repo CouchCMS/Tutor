@@ -1,0 +1,48 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' required='1' />
+<cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+
+<cms:editable name='row_image' type='row' label='Image' order='3' collapsed='0'>
+    <cms:editable name='image' type='image' label='&nbsp;' show_preview='1' preview_width='150' required='1' />
+    <cms:editable name='image_alt' label='Image Alt Text' type='text' />
+    <cms:editable name='image_show_video' type='checkbox' label='Show Video Popup?' opt_values='Yes=yes' />
+    <cms:func _into='my_cond' image_show_video=''>
+        <cms:if "<cms:is 'yes' in=image_show_video />">show<cms:else />hide</cms:if>
+    </cms:func>
+    <cms:editable name='image_link' label='Video Link (YouTube)' type='text' not_active=my_cond />
+</cms:editable>
+
+<cms:editable name='grp_form' type='group' label='Form' order='4' collapsed='0'>
+    <cms:editable name='row_form_settings' type='row' order='1'>
+        <cms:editable name='form_name' label='Form Name' desc='should be unique on the page' type='text' validator='title_ready' validator_msg="title_ready=<cms:localize 'user_name_restrictions' />" maxlength='255' class='col-xs-4 col-md-4' order='1' />
+        <cms:editable name='form_anchor' type='checkbox' label='Output Form Anchor?' opt_values='Yes=yes' class='col-xs-4' order='2' />
+
+        <cms:editable name='field_placeholder' label='Input Placeholder' type='text' maxlength='255' class='col-xs-4 col-md-2 col-break' order='3' />
+        <cms:editable name='button_text' label='Button Text' type='text' maxlength='255' class='col-xs-4 col-md-2' order='4' />
+    </cms:editable>
+
+    <!-- Confirmation Messages -->
+    <cms:editable name='row_form_confirmation' type='row' order='2' label='Confirmation Messages' collapsed='1'>
+        <cms:editable name='form_success_action' label='On Successful Submission' type='dropdown' class='col-xs-4 col-md-4 col-break' order='1' opt_values='Show Message=show_message | Redirect=redirect' opt_selected='show_message' />
+        <cms:func _into='my_cond' form_success_action=''>
+            <cms:if form_success_action='show_message'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='form_success_message' label='Success Message' type='textarea' required='1' height='80' class='col-xs-12 col-break' order='2' not_active=my_cond />
+        <cms:func _into='my_cond' form_success_action=''>
+            <cms:if form_success_action='redirect'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='form_success_redirect' label='Redirect URL' type='text' required='1' class='col-xs-12 col-break' order='3' not_active=my_cond />
+        <cms:editable name='form_error_message' label='Error Message' type='text' class='col-xs-12 col-break' order='4' />
+    </cms:editable>
+
+    <!-- Mailchimp settings -->
+    <cms:editable name='row_form_mailchimp' type='row' order='3' label='Mailchimp Settings' collapsed='1'>
+        <cms:editable name='mc_api_key' label='API Key' desc='leave empty to take from config' type='text' class='col-xs-6' order='0' />
+        <cms:editable name='mc_list_id' label='List ID' desc='leave empty to take from config' type='text' class='col-xs-6' order='1' />
+        <cms:editable name='mc_tags' label='Tags' desc='comma-separated values' type='text' class='col-xs-6' order='2' />
+        <cms:editable name='mc_double_opt' label='Double Opt?' type='checkbox' opt_values='Yes=yes' class='col-xs-4 col-md-2' order='3' />
+        <cms:editable name='mc_update_existing' label='Update Existing?' type='checkbox' opt_values='Yes=yes' class='col-xs-4 col-md-2' order='4' />
+        <cms:editable name='mc_hide_errors' label='Do Not Show Errors?' type='checkbox' opt_values='Yes=yes' class='col-xs-4 col-md-2' order='5' />
+    </cms:editable>
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='0' has_colwidth='1'></cms:embed>

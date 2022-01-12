@@ -1,0 +1,82 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class /> accordian-iconx uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-column-4" data-uk-grid>
+                    <div class="uk-grid-item-match uk-width-1-1@m uk-flex uk-flex-bottom">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-center uk-margin-remove-bottom uk-width-xlarge uk-margin-auto uk-h2" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <div class="el-body uk-text-center uk-margin-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-expand@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <div class="el-icon-blocks">
+                                <div class="uk-text-left uk-margin-remove-top uk-margin-remove-bottom">
+                                    <ul class="el-icon-blocks-items uk-grid-match uk-child-width-1-1 uk-child-width-1-1@m uk-grid-medium uk-flex-left" data-uk-grid data-uk-accordion="toggle: .el-accordion-title; content: .uk-accordion-content; multiple: true;">
+                                        <cms:show_repeatable 'items' token='pb_icon_blocks' startcount='0'>
+                                            <li>
+                                                <div class="el-icon-blocks-item item-<cms:show k_count /> uk-panel uk-margin-remove-first-child uk-width-expand@m uk-text-left uk-tile uk-tile-small uk-background-default uk-border-rounded" data-uk-scrollspy-class>
+                                                    <div class="uk-flex-left uk-flex-nowrap uk-grid-small uk-flex-top" data-uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <span class="el-icon-blocks-icon uk-icon-button square uk-button-primary" style="width: 36px;height: 36px;border-radius: 0">
+                                                            <span data-uk-icon="icon: fas-angle-down; ratio: 1;" style="width: 20px;height: 20px"></span>
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <a class="el-accordion-title" href="#">
+                                                                <h4 class="el-icon-blocks-title uk-h4 uk-margin-remove-bottom"><span></span><cms:show item_title /></h4>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-accordion-content">
+                                                        <div class="el-icon-blocks-body uk-text-muted uk-margin-top uk-margin-remove-bottom"><cms:show item_body /></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </cms:show_repeatable>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-column-2 uk-grid-item-match uk-width-expand@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <div class="el-icon-blocks mirror">
+                                <div class="uk-text-left uk-margin-remove-top uk-margin-remove-bottom">
+                                    <ul class="el-icon-blocks-items uk-grid-match uk-child-width-1-1 uk-child-width-1-1@m uk-grid-medium uk-flex-left" data-uk-grid data-uk-accordion="toggle: .el-accordion-title; content: .uk-accordion-content; multiple: true;">
+                                        <cms:show_repeatable 'items2' token='pb_icon_blocks' startcount='0'>
+                                            <li>
+                                                <div class="el-icon-blocks-item item-<cms:show k_count /> uk-panel uk-margin-remove-first-child uk-width-expand@m uk-text-left uk-tile uk-tile-small uk-background-default uk-border-rounded" data-uk-scrollspy-class>
+                                                    <div class="uk-flex-left uk-flex-nowrap uk-grid-small uk-flex-top" data-uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <span class="el-icon-blocks-icon uk-icon-button square uk-button-primary" style="width: 36px;height: 36px;border-radius: 0">
+                                                            <span data-uk-icon="icon: fas-angle-down; ratio: 1;" style="width: 20px;height: 20px"></span>
+                                                            </span>
+                                                        </div>
+                                                        <div>
+                                                            <a class="el-accordion-title" href="#">
+                                                                <h4 class="el-icon-blocks-title uk-h4 uk-margin-remove-bottom"><span></span><cms:show item_title /></h4>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-accordion-content">
+                                                        <div class="el-icon-blocks-body uk-text-muted uk-margin-top uk-margin-remove-bottom"><cms:show item_body /></div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </cms:show_repeatable>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative uk-container-small">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <cms:if "<cms:strlen subtitle />"><h6 class="el-subtitle uk-text-center uk-margin-remove-bottom uk-text-uppercase" data-uk-scrollspy-class><span></span><cms:show subtitle /></h6></cms:if>
+                            <cms:if "<cms:strlen title />"><h1 class="el-title uk-text-center uk-margin-remove-bottom uk-heading-primary" data-uk-scrollspy-class><span></span><cms:show title /></h1></cms:if>
+                            <cms:if "<cms:strlen body />"><div class="el-body uk-text-center uk-margin-top uk-margin-remove-bottom uk-text-large uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />
+                            </div></cms:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

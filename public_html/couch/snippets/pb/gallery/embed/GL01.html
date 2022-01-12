@@ -1,0 +1,46 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' required='1' />
+<cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+
+<cms:editable name='grp_items' type='group' label='Items' order='4' collapsed='0'>
+    <cms:editable name='row_settings_items' type='row' order='1'>
+        <cms:editable name='items_link_open_in' label='Open link in' type='dropdown' class='col-xs-4 col-md-2' order='1' opt_values='Popup=popup | Same Window=same | New Window=new' opt_selected='popup' />
+        <cms:func _into='my_cond' items_link_open_in=''>
+            <cms:if items_link_open_in eq 'popup'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='items_link_popup_animation' label='Popup Animation' type='dropdown' class='col-xs-4 col-md-2' order='2' opt_values='Fade=fade | Slide=slide | Scale=scale' opt_selected='fade' not_active=my_cond />
+        <cms:editable name='items_link_default_to_image' type='checkbox' label='Link to main image by default?' opt_values='Yes=yes' class='col-xs-4 col-md-4' order='3' />
+    
+        <cms:editable name='items_filter' type='checkbox' label='Show Filter?' opt_values='Yes=yes' class='col-xs-2 col-md-2 col-break' order='4' />
+        <cms:func _into='my_cond2' items_filter=''>
+            <cms:if "<cms:is 'yes' in=items_filter />">show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:repeatable name='items_filter_items' label='Filter Terms' desc='Please use only single words as values. Leave value blank for selecting all items' class='col-xs-12 col-md-6 child col-break' order='5' not_active=my_cond2>
+            <cms:editable name='filter_text' type='text' label='Display Text' />
+            <cms:editable name='filter_value' type='text' label='Value' />
+        </cms:repeatable>
+    </cms:editable>
+
+    <cms:repeatable name='items' label='Items' stacked_layout='1' order='2'>
+        <cms:editable name='item_title' type='text' height='80' label='Title' />
+        <cms:editable name='item_image' type='image' label='Image' show_preview='1' preview_width='150' />
+        <cms:editable name='item_image_position' type='dropdown' label='- Image Position' opt_values='Center Center=center-center | Top Left=top-left | Top Center=top-center | Top Right=top-right | Center Left=center-left | Center Right=center-right | Bottom Left=bottom-left | Bottom Center=bottom-center | Bottom Right=bottom-right' opt_selected='center-center' />
+        <cms:editable name='item_image_alt' type='text' label='- Image Alt' />
+        <cms:editable name='item_body' type='textarea' height='80' label='Body' />
+        <cms:editable name='item_link' type='text' label='Link' />
+        <cms:editable name='item_popup_type' label='- Popup Type' type='dropdown' opt_values='Default (for images/videos)=default | Iframe (for web pages)=iframe' opt_selected='default' not_active=my_cond />
+        <cms:editable name='item_filter_terms' label='Filter Terms' type='checkbox' dynamic='opt_values' opt_values='pb/misc/embed/item_filters.html' not_active=my_cond2 />
+    </cms:repeatable>
+</cms:editable>
+
+<!-- js/css -->
+<cms:editable name='section_css' type='message' order='-100' >
+    <style>
+        #k_label_f_items, #k_label_f_items+br {display:none;}
+        .k_element_item_image_position label, 
+        .k_element_item_image_alt label,
+        .k_element_item_popup_type label
+        { color:#777;}
+    </style>
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

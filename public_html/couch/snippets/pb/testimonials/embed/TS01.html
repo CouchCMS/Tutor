@@ -1,0 +1,8 @@
+<cms:repeatable name='items' label='Items' desc='recommended image size 400px X 400px' stacked_layout='1' order='1'>
+    <cms:editable name='item_image' type='image' label='Image' show_preview='1' preview_width='150' />
+    <cms:editable name='item_title' type='text' label='Client' />
+    <cms:editable name='item_subtitle' type='text' label='Designation' />
+    <cms:editable name='item_body' type='textarea' height='80' label='Testimonial' />
+</cms:repeatable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

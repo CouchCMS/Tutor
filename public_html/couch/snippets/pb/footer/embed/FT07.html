@@ -1,0 +1,12 @@
+<cms:repeatable name='items' label='Subnav' order='1'>
+    <cms:editable name='item_text' type='text' label='Text' />
+    <cms:editable name='item_link' type='text' label='Link' />
+    <cms:editable name='item_target' label='Target' type='dropdown' opt_values='Same Window=default | New Window=new_window | Scroll To=scroll_to' opt_selected='default' />
+</cms:repeatable>
+
+<cms:editable name='row_copyright' type='row' label='Copyright' order='2' collapsed='0'>
+    <cms:editable name='copyright' label='Text' type='text' order='1' />
+    <cms:editable name='link' type='text' label='Link' order='2' />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

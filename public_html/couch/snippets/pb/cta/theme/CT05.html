@@ -1,0 +1,33 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid uk-grid-collapse" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle uk-background-primary uk-box-shadow-medium uk-border-rounded uk-light uk-cover-container">
+                        <img class="el-image-cover" src="<cms:show k_site_link />uploads/image/tutor/covers/header-background.jpg" data-uk-cover />                                                                                                                                                                                                            
+                        <div class="el-panel uk-panel uk-tile uk-tile-large">
+                            <h2 class="el-title uk-text-center uk-margin-remove-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-h2" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <div class="el-body uk-text-center uk-margin-small-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />
+                            </div>
+                            <div class="el-buttons uk-margin-medium-top uk-margin-remove-bottom" data-uk-scrollspy-class>
+                                <div class="uk-flex-middle uk-child-width-auto uk-grid-small uk-flex-center" data-uk-grid>
+                                    <div>
+                                        <a class="uk-button uk-button-danger uk-button-large" href="<cms:show button_link />"<cms:if button_target eq 'new_window'> target="_blank"<cms:else_if button_target eq 'scroll_to' /> data-uk-scroll</cms:if>>
+                                        <cms:show button_text /></a>
+                                    </div>
+                                    <cms:if show_second_button>
+                                        <div>
+                                            <a class="uk-button uk-button-default uk-button-large" href="<cms:show button2_link />"<cms:if button2_target eq 'new_window'> target="_blank"<cms:else_if button2_target eq 'scroll_to' /> data-uk-scroll</cms:if>>
+                                            <cms:show button2_text /></a>
+                                        </div>
+                                    </cms:if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

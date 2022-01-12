@@ -1,0 +1,11 @@
+<cms:repeatable name='items' label='Items' stacked_layout='1' order='1'>
+    <cms:editable name='item_title' type='text' label='Title' />
+    <cms:editable name='item_body' type='textarea' height='80' label='Body' />
+</cms:repeatable>
+
+<cms:editable name='row_image' type='row' label='Image' order='2' collapsed='0'>
+    <cms:editable name='image' type='image' label='&nbsp;' show_preview='1' preview_width='150' required='1' />
+    <cms:editable name='image_alt' label='Image Alt Text' type='text' />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='0' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

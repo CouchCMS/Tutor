@@ -1,0 +1,24 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative uk-container-xsmall">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <div class="el-image uk-text-center uk-margin-remove-top uk-margin-remove-bottom" data-uk-scrollspy-class<cms:if image_show_link && image_link_open_in eq 'popup'> data-uk-lightbox="toggle: a.el-popup-link"</cms:if>>
+                                <cms:if image_show_link>
+                                    <a class="<cms:if image_link_open_in eq 'popup'>el-popup-link</cms:if>" href="<cms:show image_link />"<cms:if image_link_open_in eq 'new'> target="_blank"</cms:if><cms:if image_link_open_in eq 'popup'><cms:if image_link_popup_type ne 'default'> data-type="<cms:show image_link_popup_type />"</cms:if></cms:if>>
+                                        <img src="<cms:show image />" alt="<cms:show image_alt />" class="uk-border-rounded">
+                                    </a>
+                                <cms:else />
+                                    <img src="<cms:show image />" alt="<cms:show image_alt />" class="uk-border-rounded">
+                                </cms:if>
+                            </div>
+                            <cms:if "<cms:strlen image_caption />"><h6 class="el-subtitle uk-text-left uk-margin-small-top uk-text-muted" data-uk-scrollspy-class><span></span><cms:show image_caption /></h6></cms:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

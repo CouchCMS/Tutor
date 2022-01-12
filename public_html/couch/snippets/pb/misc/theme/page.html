@@ -1,0 +1,33 @@
+<cms:capture into='header_buffer' >
+    <cms:if "<cms:not hide_header />">
+        <cms:get_field 'headers_pb' masterpage='globals/headers.php' page=header_page>
+            <cms:set menu_done='0' />
+            <cms:show_pagebuilder k_field_name>
+                <cms:set my_tpl="<cms:get 'k_template__parent_tpl' scope='local' />" />
+                <cms:if my_tpl ne 'blocks/menu.php' || (my_tpl eq 'blocks/menu.php' && menu_done eq '0')>
+                    <cms:show k_content />
+                </cms:if>
+                <cms:if my_tpl eq 'blocks/menu.php'><cms:set menu_done='1' scope='parent' /></cms:if>
+            </cms:show_pagebuilder>
+        </cms:get_field>
+    </cms:if>
+</cms:capture>
+
+<cms:capture into='footer_buffer' >
+    <cms:if "<cms:not hide_footer />">
+        <cms:get_field 'footers_pb' masterpage='globals/footers.php' page=footer_page>
+            <cms:show_pagebuilder k_field_name>
+                <cms:show k_content />
+            </cms:show_pagebuilder>
+        </cms:get_field>
+    </cms:if>
+</cms:capture>
+
+<cms:capture into='pb_tile_content' >
+    <cms:if "<cms:strlen header_buffer />"><cms:show header_buffer /></cms:if>
+    <cms:show_pagebuilder 'main_pb'>
+        <cms:show k_content />
+    </cms:show_pagebuilder>
+    <cms:if "<cms:strlen footer_buffer />"><cms:show footer_buffer /></cms:if>
+</cms:capture>
+<cms:render 'pb_wrapper' 'page' />

@@ -1,0 +1,43 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-expand@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-left@m uk-text-center uk-margin-remove-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-margin-auto-right@m uk-h3" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <div class="el-body uk-text-left@m uk-text-center uk-margin-small-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-margin-auto-right@m uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-column-2 uk-grid-item-match uk-width-expand@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <div class="el-form">
+                                <div class="el-form-main uk-margin-remove-top uk-margin-remove-bottom uk-width-xlarge uk-margin-auto uk-margin-auto-right@m" data-uk-scrollspy-class>
+                                    <cms:form name=form_name class="uk-form-stacked uk-grid-xsmall" anchor="<cms:if form_anchor>1<cms:else />0</cms:if>" data-uk-grid="" method="post">
+                                        <cms:embed 'pb/misc/theme/process_mailchimp_form.html' />
+
+                                        <div class="el-form-field text email uk-width-expand">
+                                            <div class="uk-form-controls">
+                                                <cms:input type="text" name="email"  id="email" validator="email" value=""  class="uk-input uk-form-large uk-form-width-auto<cms:if k_error_email> uk-form-danger</cms:if>" required='1' "required=\"required\"" placeholder="<cms:show field_placeholder />" simple_mode='1'/>                                
+                                            </div>
+                                            <cms:if k_error_email><span class="uk-label uk-label-danger"><cms:show k_error_email /></span></cms:if>
+                                        </div>
+                                        <div class="el-form-field submit submit uk-width-auto">
+                                            <div class="uk-flex-middle uk-flex-left" data-uk-grid>
+                                                <div class="uk-form-width-auto">
+                                                    <button class="uk-button uk-width-1-1 uk-button-danger uk-button-large" type="submit" name="submit"><cms:show button_text /></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </cms:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

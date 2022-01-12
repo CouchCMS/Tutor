@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><cms:show k_page_title /></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <cms:if k_pb_context eq 'page'>
+            <meta name="robots" content="<cms:if seo_noindex >noindex, nofollow<cms:else />all</cms:if>" />
+            <cms:if seo_noindex eq '' >
+                <cms:set my_desc="<cms:if seo_desc ><cms:show seo_desc /><cms:else /><cms:get_field 'settings_seo_desc' masterpage='globals/settings.php' /></cms:if>" />
+                <cms:if my_desc><meta name="description" content="<cms:show my_desc />" /></cms:if> 
+                <cms:set my_keywords="<cms:if seo_keywords ><cms:show seo_keywords /><cms:else /><cms:get_field 'settings_seo_keywords' masterpage='globals/settings.php' /></cms:if>" />
+                <cms:if my_keywords><meta name="keywords" content="<cms:show my_keywords />"/></cms:if> 
+            </cms:if>
+            <meta property="og:title" content="<cms:show k_page_title />" />
+            <cms:if social_desc><meta property="og:description" content="<cms:show social_desc />" /></cms:if> 
+            <cms:if social_image><meta property="og:image" content="<cms:show social_image />" /></cms:if>
+        </cms:if> 
+        <link rel="stylesheet" href="<cms:show k_site_link />assets/css/style.css?v=<cms:php>echo( @filemtime('<cms:show k_site_path />assets/css/style.css') );</cms:php>" />
+        <link rel="stylesheet" href="<cms:show k_site_link />assets/css/custom.css?v=<cms:php>echo( @filemtime('<cms:show k_site_path />assets/css/custom.css') );</cms:php>" />
+        <script src="<cms:show k_site_link />assets/js/script.js?v=<cms:php>echo( @filemtime('<cms:show k_site_path />assets/js/script.js') );</cms:php>"></script>
+        <script src="<cms:show k_site_link />assets/js/uikit-icons.min.js?v=<cms:php>echo( @filemtime('<cms:show k_site_path />assets/js/uikit-icons.min.js') );</cms:php>"></script>
+        <link rel="icon" href="<cms:show k_site_link />favicon.png">
+    </head>
+    <body>
+        <cms:if k_pb_context eq 'page'><div id="totop" class="uk-position-top-left uk-overlay" data-uk-scrollspy="repeat:true;hidden:false;"><a href="#totop" class="uk-icon-button" data-uk-scroll><span data-uk-icon="icon: chevron-up; ratio: 1.4;"></span></a></div></cms:if>
+        <div id="el-page-container">
+            <div id="el-page">
+                <cms:show pb_tile_content />
+
+                <cms:if "<cms:not k_pb_context eq 'page' />" && pb_menu_requires_div>
+                    <div id="section-dummy_menu" class="uk-position-relative" data-uk-img data-src="<cms:show k_admin_link />addons/page-builder/theme/checkered-<cms:show pb_menu_requires_div />.png" style="background-position: 50% 50%; background-repeat: repeat-x; height:<cms:show k_template__pb_height />px;"></div>
+                </cms:if>
+                <script><cms:embed 'pb/misc/script.min.js' /></script>
+            </div>
+        </div>
+    </body>
+</html>

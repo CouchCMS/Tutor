@@ -1,0 +1,32 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' required='1' />
+<cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+
+<cms:editable name='grp_items' type='group' label='Items' order='3' collapsed='0'>
+    <cms:editable name='row_settings_items' type='row' order='1'>
+        <cms:editable name='items_link_open_in' label='Open link in' type='dropdown' class='col-xs-4 col-md-2' order='1' opt_values='Same Window=same | New Window=new' opt_selected='same' />
+        <cms:editable name='item_list_show_unavailable' type='hidden'>1</cms:editable>
+    </cms:editable>
+    
+    <cms:repeatable name='items' label='Plans' stacked_layout='1' order='2'>
+        <cms:editable name='item_title' type='text' label='Tier' />
+        <cms:editable name='item_pricing' label='Pricing' type='pb_pricing' />
+        <cms:editable name='item_body' type='textarea' height='80' label='Details' />
+        <cms:editable name='item_list_msg' label='List' type='message'>
+            <font color="#777">Separate individual items with a blank line.</font>
+        </cms:editable>
+        <cms:editable name='item_list' type='textarea' height='160' label='&nbsp;' />
+        <cms:editable name='item_link' type='text' label='Link' />
+        <cms:editable name='item_link_text' type='text' label='- Link Text' />
+        <cms:editable name='item_ribbon' type='text' label='Ribbon Text' />
+    </cms:repeatable>
+</cms:editable>
+
+<!-- js/css -->
+<cms:editable name='section_css' type='message' order='-100' >
+    <style>
+        .k_element_item_link_text label
+        { color:#777;}
+    </style>
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='0' has_colwidth='0'></cms:embed>

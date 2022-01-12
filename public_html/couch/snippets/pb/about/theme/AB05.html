@@ -1,0 +1,80 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-right&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-center uk-margin-small-top uk-margin-remove-bottom uk-h2" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <hr class="el-divider uk-text-center uk-margin-small-top uk-divider-small" data-uk-scrollspy-class />
+                            <div class="el-body uk-text-center uk-margin-top uk-margin-remove-bottom uk-width-xlarge uk-margin-auto uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />            
+                            </div>
+                            <div class="el-image-blocks slider">
+                                <div class="uk-text-center uk-margin-medium-top uk-margin-remove-bottom">
+                                    <div class="el-slider-arrow-out-large" data-uk-slider="velocity: 1; clsActivated: ;">
+                                        <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
+                                            <div class="uk-slider-container">
+                                                <ul class="el-image-blocks-items uk-grid-match uk-child-width-1-1 uk-child-width-1-1@m uk-slider-items">
+                                                    <cms:show_repeatable 'items' token='pb_icon_blocks' startcount='0'>
+                                                        <li class="el-image-blocks-item item-<cms:show k_count /> uk-transition-toggle">
+                                                            <div class="el-image-blocks-unit uk-grid-item-match">
+                                                                <div class="el-image-blocks-unit-layout uk-flex-row uk-cover-container uk-grid-item-match" data-uk-scrollspy-class>
+                                                                    <div class="el-image-blocks-image-component uk-grid-item-match uk-width-1-2@m">
+                                                                        <div class="el-trans uk-grid-item-match">
+                                                                            <div class="el-anim uk-grid-item-match">
+                                                                                <div class="el-sizer uk-grid-item-match uk-cover-container uk-flex-middle" data-aspect="0.6">
+                                                                                    <div class="el-image-blocks-image image uk-position-cover uk-background-cover el-background-image uk-background-<cms:show item_image_position />" data-uk-img data-src="<cms:show item_image />"><img src="<cms:show item_image />" alt="<cms:show item_image_alt />" /></div>
+                                                                                    <div class="el-image-blocks-image-contents uk-panel uk-margin-remove-first-child uk-text-center uk-tile uk-tile-xsmall">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="el-image-blocks-text-component uk-width-expand uk-grid-item-match uk-flex-middle uk-tile uk-tile-small">
+                                                                        <div class="el-image-blocks-text-contents uk-panel uk-margin-remove-first-child uk-text-left">
+                                                                            <h4 class="el-image-blocks-title uk-text-primary uk-margin-small-bottom"><span></span><cms:show item_title /></h4>
+                                                                            <div class="el-image-blocks-body uk-margin-bottom"><cms:show item_body /></div>
+                                                                            <cms:if "<cms:arr_count item_list />">
+                                                                                <div class="el-image-blocks-list uk-margin-bottom">
+                                                                                    <ul class="uk-text-left uk-child-width-1-1@m uk-grid-xsmall uk-list-bullet" data-uk-grid>
+                                                                                        <cms:each item_list as='itemx'>
+                                                                                            <li>
+                                                                                                <cms:show itemx />                            
+                                                                                            </li>
+                                                                                        </cms:each>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </cms:if>
+                                                                            <cms:if "<cms:strlen item_link />">
+                                                                                <div class="el-image-blocks-link 1_button uk-margin-medium-top">
+                                                                                    <div class="uk-flex-middle uk-child-width-auto uk-grid-small uk-flex-left" data-uk-grid>
+                                                                                        <div>
+                                                                                            <a class="uk-button uk-button-default" href="<cms:show item_link />"<cms:if items_link_open_in eq 'new'> target="_blank"</cms:if>>
+                                                                                            <cms:show item_link_text />  
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </cms:if>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </cms:show_repeatable>
+                                                </ul>
+                                            </div>
+                                            <a class="el-image-blocks-slider-arrow-left uk-position-center-left-out uk-animation-fade uk-position-small uk-slidenav-large" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+                                            <a class="el-image-blocks-slider-arrow-right uk-position-center-right-out uk-animation-fade uk-position-small uk-slidenav-large" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

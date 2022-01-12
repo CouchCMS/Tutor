@@ -1,0 +1,37 @@
+<cms:if "<cms:not "<cms:func_exists 'pb_menu_logo' />" />">
+    <cms:embed 'pb/misc/theme/menu_layout.html' />
+</cms:if>
+
+<div class="el-header-mobile uk-hidden@m">
+    <div class="uk-navbar-container <cms:show pb_menu_bg_color_mobile />">
+        <nav data-uk-navbar>
+            <div class="uk-navbar-left">
+                <cms:call 'pb_menu_logo' 'mobile' />
+            </div>
+            <div class="uk-navbar-center">
+                <cms:call 'pb_menu_hamburger' />
+            </div>
+            <div class="uk-navbar-right">
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="el-header uk-visible@m <cms:show pb_menu_header />">
+    <div<cms:if pb_menu_sticky> data-uk-sticky="<cms:show pb_menu_sticky />"</cms:if>>
+        <div class="uk-navbar-container <cms:show pb_menu_transparent /> <cms:show pb_menu_bg_color />">
+            <div class="uk-container <cms:show pb_menu_width />">
+                <nav class="uk-navbar" data-uk-navbar="{&quot;align&quot;:&quot;left&quot;,&quot;boundary&quot;:&quot;!.uk-navbar-container&quot;}">
+                    <div class="uk-navbar-left">
+                        <cms:call 'pb_menu_logo' />
+                    </div>
+                    <div class="uk-navbar-center">
+                    </div>
+                    <div class="uk-navbar-right">
+                        <cms:call 'pb_menu_nav' />
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>                

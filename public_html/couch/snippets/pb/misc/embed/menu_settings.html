@@ -1,0 +1,92 @@
+<cms:editable name='grp_menu_settings' type='group' label='Menu Settings' order='1' collapsed='1'>
+    <cms:editable name='row_menu_settings' type='row' order='1' >
+        <cms:editable name='menu_for' label='Menu is for' type='dropdown' class='col-xs-4 col-md-2' order='-1' opt_values='One Page Site=one_page_site | Multiple Pages Site=multiple_pages_site' opt_selected='one_page_site' />
+        <cms:editable name='menu_width' label='Menu Width' type='dropdown' class='col-xs-4 col-md-2' order='0' opt_values='Default=default | XSmall=xsmall | Small=small | Large=large | Full Width=expand  | Full Width No Padding=no_padding' opt_selected='default' />
+
+        <cms:editable name='menu_is_sticky' type='dropdown' label='Menu is Sticky' opt_values='Never=never | On Scroll Down=on_scroll_down | On Scroll Up=on_scroll_up | Always=always' opt_selected='never' order='11' class='col-xs-4 col-md-2 col-break' />
+        <cms:func _into='my_cond' menu_is_sticky=''>
+            <cms:if menu_is_sticky ne 'never'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='menu_shrink_on_sticky' type='checkbox' label='Shrink on Sticky?' opt_values='Yes=yes' class='col-xs-4 col-md-2 child' order='11' not_active=my_cond />
+        <cms:editable name='menu_start_as_transparent' type='checkbox' label='Start as Transparent?' opt_values='Yes=yes' class='col-xs-4 col-md-2 child' order='12' not_active=my_cond />
+        <cms:func _into='my_cond' menu_is_sticky='' menu_start_as_transparent=''>
+            <cms:if menu_is_sticky ne 'never' && "<cms:is 'yes' in=menu_start_as_transparent />">show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='menu_sticky_background_is_dark' type='checkbox' label='Background below is dark?' opt_values='Yes=yes' class='col-xs-6 col-md-4 child' order='13' not_active=my_cond />
+
+        <cms:func _into='my_cond' menu_is_sticky='' menu_start_as_transparent=''>
+            <cms:if menu_is_sticky ne 'never' && "<cms:is 'yes' in=menu_start_as_transparent />">hide<cms:else />show</cms:if>
+        </cms:func>
+        <cms:editable name='menu_overlaps_first_section' type='checkbox' label='Menu Overlaps First Section of Page?' opt_values='Yes=yes' class='col-xs-12' order='14' not_active=my_cond />
+
+        <cms:func _into='my_cond' menu_for=''>
+            show
+            <cms:alt_js>
+                var $section_caching = $form.find("select[name='f_section_caching']");
+                $section_caching.val('never');
+                return 1; //hide
+            </cms:alt_js>
+        </cms:func>
+        <cms:editable name='section_caching' label='Caching' type='dropdown' class='col-xs-4 col-md-2 col-break' order='70' opt_values='Always=always | Skip Posted Forms=skip_post | Never=never' opt_selected='always' not_active=my_cond />
+    </cms:editable>
+    
+    <cms:editable name='row_menu_mobile_settings' type='row' order='2' label='Mobile Version' collapsed='0'>
+        <cms:editable name='menu_mobile_animation' type='dropdown' label='Menu Animation' opt_values='Slide=slide | Push=push | Reveal=reveal | None=none' opt_selected='slide' order='3' class='col-xs-4 col-md-2' not_active='' />
+        <cms:editable name='menu_mobile_items_expanded' type='checkbox' label='Show All Items Expanded?' opt_values='Yes=yes' class='col-xs-4 col-md-2' order='4' />
+        <cms:editable name='menu_mobile_items_centered' type='checkbox' label='Show Items Centered?' opt_values='Yes=yes' class='col-xs-4 col-md-2' order='5' />
+    </cms:editable>
+</cms:editable>
+
+<cms:editable name='grp_menu' type='group' label='Menu' order='2' collapsed='0'>
+    <cms:editable name='row_menu_logo' type='row' order='1' label='Logo' collapsed='0'>
+        <cms:editable name='menu_logo_type' type='radio' label='Type' opt_values='Image=image | SVG=svg | Text=text' opt_selected='image' order='1' />
+
+        <cms:func _into='my_cond2' menu_logo_type=''>
+            <cms:if menu_logo_type='image'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='menu_logo_image' type='image' label='Image 1' desc='For Light Backround' show_preview='1' preview_height='50' order='2' class='col-xs-12 col-md-6' not_active=my_cond2 />
+        <cms:editable name='menu_logo_image_2' type='image' label='Image 2' desc='For Dark Backround' show_preview='1' preview_height='50' order='3' class='col-xs-12 col-md-6 col-break' not_active=my_cond2 />
+        <cms:editable name='menu_logo_image_mobile' type='image' label='Image' desc='For Mobile' show_preview='1' preview_height='50' order='4' class='col-xs-12 col-md-6 col-break' not_active=my_cond2 />
+
+        <cms:func _into='my_cond2' menu_logo_type=''>
+            <cms:if menu_logo_type='svg'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='menu_logo_svg' type='file' label='SVG 1' desc='For Light Backround' order='5' class='col-xs-12 col-md-6' not_active=my_cond2 />
+        <cms:editable name='menu_logo_svg_2' type='file' label='SVG 2' desc='For Dark Backround' order='6' class='col-xs-12 col-md-6 col-break' not_active=my_cond2 />
+        <cms:editable name='menu_logo_svg_mobile' type='file' label='SVG' desc='For Mobile' order='7' class='col-xs-12 col-md-6 col-break' not_active=my_cond2 />
+
+        <cms:func _into='my_cond2' menu_logo_type=''>
+            <cms:if (menu_logo_type='image' || menu_logo_type='svg')>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='menu_logo_alt' label='Alt Text' type='text' class='col-xs-4 col-md-4 col-break' order='8' not_active=my_cond2 />
+        <cms:editable name='menu_logo_link' label='Link' type='text' class='col-xs-4 col-md-4 col-break' order='8' not_active=my_cond2 />
+
+        <cms:func _into='my_cond2' menu_logo_type=''>
+            <cms:if menu_logo_type='text'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='menu_logo_text' label='Logo Text' type='text' class='col-xs-12 col-md-6 col-break' order='8' not_active=my_cond2 />
+    </cms:editable>
+
+    <cms:func _into='my_cond' menu_for=''>
+        <cms:if menu_for eq 'one_page_site'>show<cms:else />hide</cms:if>
+    </cms:func>
+    <cms:editable name='row_menu_items' type='row' order='4' label='Menu Items' collapsed='0' not_active=my_cond>
+        <cms:repeatable name='menu_items' label='Items'>
+            <cms:editable name='menu_text' type='text' label='Text' />
+            <cms:editable name='menu_link' type='text' label='Link' />
+            <cms:editable name='menu_new_window' type='checkbox' label='New Window?' col_width='120' opt_values='Yes=yes' />
+        </cms:repeatable>
+    </cms:editable>
+</cms:editable>
+
+<!-- js/css -->
+<cms:editable name='menu_css_global' type='message' order='-1000' >
+    <style>
+        <style>
+        .field.child label{color:#777;}
+        .k_row  .select{width:100%;}
+        #k_element_section_caching,
+        #k_label_f_menu_items, #k_label_f_menu_items+br
+        {display:none;}
+    </style>
+</cms:editable>

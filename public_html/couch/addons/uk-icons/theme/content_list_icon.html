@@ -1,0 +1,96 @@
+<cms:if k_icon_exit_action>
+    <cms:render 'content_list_icon_exit' />
+<cms:else />
+    <cms:set my_paginator='' />
+    <cms:set my_paginator_label='' />
+    <cms:set my_filters="<cms:render 'filters' />" />
+    <cms:set my_list="<cms:render 'content_list_icon_inner' />" />
+
+    <div class="tab-pane fade active in" id="tab-pane-<cms:show k_route_module />">
+        <div id="k-modal-body">
+            <cms:if my_filters || my_paginator>
+                <div class="ctrl-top">
+
+                    <cms:show my_filters />
+
+                    <div class="ctrl-right">
+                        <cms:show my_paginator_label />
+                        <cms:show my_paginator />
+                    </div>
+                </div>
+
+                <cms:if "<cms:not my_filters />"><div class="sep">&nbsp;</div></cms:if>
+            </cms:if>
+
+            <form name="<cms:show k_cur_form />" id="<cms:show k_cur_form />" class="bulk-form" action="" method="post">
+
+                <div id="icon-list"><cms:show my_list /></div>
+
+                <cms:if my_paginator>
+                    <div class="ctrl-bot">
+                        <div class="ctrl-right">
+                            <cms:show my_paginator />
+                        </div>
+                    </div>
+                </cms:if>
+
+                <input type="hidden" id="selected_icon" name="selected_icon" value="">
+                <input type="hidden" id="nonce" name="nonce" value="<cms:create_nonce 'bulk_action_page' />">
+                <input type="hidden" id="k_bulk_action" name="k_bulk_action" value="">
+            </form>
+        </div>
+        <div id="k-modal-footer">
+            <cms:render 'batch_actions' />
+            <cms:render 'page_actions' />
+            <cms:render 'extended_actions' />
+        </div>
+        <div id="screen" style="display:none; position:absolute; width:100%; height:100%; top:0; left:0; background-color: black; opacity: 0.1;"></div>
+    </div>
+
+    <cms:admin_add_css>
+        .icon-list ul{ list-style-type: none; }
+        .icon-item{
+            padding: 12px 10px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+        }
+        .icon-item:hover {
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        .icon-item img{
+            width: 40px;
+            height: 40px;
+        }
+        .icon-item .title{
+            padding-left: 15px;
+        }
+        .icon-item a{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </cms:admin_add_css>
+
+    <cms:admin_add_js>
+        $(function(){
+            form = $('#<cms:show k_cur_form />');
+            input = form.find('#selected_icon');
+            list = $('#icon-list');
+            var screen = $('#screen');
+
+            list.on( "click", "a", function( e ) {
+                input.val( $(this).attr('data-src') );
+                screen.css( "display", "block" );
+                form.submit();
+            });
+        });
+    </cms:admin_add_js>
+</cms:if>

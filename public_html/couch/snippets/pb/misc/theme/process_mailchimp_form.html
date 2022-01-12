@@ -1,0 +1,52 @@
+<cms:if k_success>
+    <cms:set merge_fields='{}' is_json='1' />
+    <cms:if "<cms:strlen frm_extra />">
+        <cms:put "merge_fields.<cms:show field_extra_mailchimp />" value=frm_extra />
+    </cms:if>
+
+    <cms:mailchimp_subscribe
+        email=frm_email
+        first_name=frm_name
+        api_key=mc_api_key
+        list_id=mc_list_id
+        merge_fields=merge_fields
+        tags="<cms:show mc_tags />,<cms:show frm_options />"
+        double_opt="<cms:if mc_double_opt>1</cms:if>"
+        update_existing="<cms:if mc_update_existing>1</cms:if>"
+    />
+
+    <cms:if k_success>
+        <cms:set_flash name="pb_form_<cms:show k_cur_form />_submit_success" value='1' />
+
+        <cms:if form_success_action eq 'show_message'>
+            <cms:redirect "<cms:get 'k_page_link' scope='global' />" />
+        <cms:else />
+            <cms:redirect form_success_redirect />
+        </cms:if>
+    <cms:else />
+        <cms:if "<cms:not mc_hide_errors />">
+            <cms:if "<cms:strlen form_error_message />">
+                <cms:set form_error_message="<cms:show form_error_message /><br><cms:show k_error />" />
+            <cms:else />
+                <cms:set form_error_message=k_error />    
+            </cms:if>
+        </cms:if>                         
+    </cms:if>    
+</cms:if>
+
+<cms:if form_success_action eq 'show_message'>    
+    <cms:set submit_success="<cms:get_flash "pb_form_<cms:show k_cur_form />_submit_success" />" />
+    <cms:if submit_success>
+        <div class="uk-alert-success uk-width-1-1" data-uk-alert>
+            <a class="uk-alert-close" data-uk-close></a>
+            <div><cms:nl2p><cms:show form_success_message /></cms:nl2p></div>
+        </div>
+    </cms:if>
+</cms:if>
+
+<cms:if k_error && "<cms:strlen form_error_message />">
+    <div class="uk-alert-danger uk-width-1-1" data-uk-alert>
+        <a class="uk-alert-close" data-uk-close></a>
+        <p><cms:show form_error_message /></p>
+    </div>
+</cms:if>

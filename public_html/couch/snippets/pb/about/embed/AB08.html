@@ -1,0 +1,15 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' required='1' />
+<cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+
+<cms:editable name='row_blockquotes' type='row' label='Quotation' order='3' collapsed='0'>
+    <cms:editable name='blockquotes_text' label='Text' type='textarea' height='120' order='1' class='col-xs-12' />
+    <cms:editable name='blockquotes_author' label='Author' type='text' class='col-xs-6' order='2' />
+    <cms:editable name='blockquotes_source' label='Source' type='text' class='col-xs-6' order='3' />
+</cms:editable>
+
+<cms:editable name='row_image' type='row' label='Image' order='4' collapsed='0'>
+    <cms:editable name='image' type='image' label='&nbsp;' show_preview='1' preview_width='150' required='1' />
+    <cms:editable name='image_alt' label='Image Alt Text' type='text' />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='0' has_colwidth='1'></cms:embed>

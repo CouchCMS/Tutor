@@ -1,0 +1,20 @@
+<cms:repeatable name='items' label='Items' stacked_layout='1' order='2'>
+    <cms:editable name='item_title' type='text' height='80' label='Title' />
+    <cms:editable name='item_body' type='textarea' height='80' label='Body' />
+    <cms:editable name='item_image' type='image' label='Image' show_preview='1' preview_width='150' />
+    <cms:editable name='item_image_position' type='dropdown' label='- Image Position' opt_values='Center Center=center-center | Top Left=top-left | Top Center=top-center | Top Right=top-right | Center Left=center-left | Center Right=center-right | Bottom Left=bottom-left | Bottom Center=bottom-center | Bottom Right=bottom-right' opt_selected='center-center' />
+    <cms:editable name='item_image_alt' type='text' label='- Image Alt' />
+</cms:repeatable>
+
+<!-- js/css -->
+<cms:editable name='section_css' type='message' order='-100' >
+    <style>
+        #k_label_f_items, #k_label_f_items+br {display:none;}
+        .k_element_item_image_position label, 
+        .k_element_item_image_alt label,
+        .k_element_item_popup_type label
+        { color:#777;}
+    </style>
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='0' has_colwidth='0'></cms:embed>

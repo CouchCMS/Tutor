@@ -1,0 +1,143 @@
+<div class="k-relation-ex">
+    <div class="icon-list">
+        <ul name="<cms:show k_field_input_id />_select" id="<cms:show k_field_input_id />_select" class="row">
+            <cms:each k_options as='value'>
+                <li class="icon-item col col-">
+                    <img src="<cms:show k_admin_link />addons/uk-icons/icons/<cms:show value />.svg"/>
+                    <a href="#" title="<cms:show value />" data-id="<cms:show key />"></a>
+                </li>
+            </cms:each>
+        </ul>
+    </div>
+    <div class="k-relation-buttons">
+        <a class="btn popup-iframe add" href="#" tabindex="1" data-mfp-src="//about:blank" data_relation_src="<cms:show k_target_link />" data_relation_field="<cms:show k_field_input_id />" onclick="this.blur();" ><cms:show_icon 'plus' /><span><cms:localize 'add' /></span></a>
+        <a class="btn remove disabled" href="#" tabindex="2" onclick="this.blur();"><cms:localize 'remove' /></a>
+    </div>
+    <input type="hidden" class="k-relation-ids" name="<cms:show k_field_input_id />" value="<cms:show k_option_ids />" />
+</div>
+
+<cms:if k_add_js >
+    <cms:admin_add_css>
+        .icon-list{ border: 1px solid rgba(0, 0, 0, 0.2); margin-bottom: 5px; border-radius: 3px; padding: 5px; }
+        .icon-list ul{ list-style-type: none; padding-left: 15px; }
+        .icon-item{
+            padding: 10px 10px;
+            /*margin-bottom: 8px;*/
+            border-radius: 4px;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+        }
+        .icon-item:hover {
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        .icon-item img{
+            width: 32px;
+            height: 32px;
+        }
+        .icon-item .title{
+            padding-left: 15px;
+        }
+        .icon-item a{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .icon-item a.selected{
+            border: 1px solid red;
+            border-radius: 4px;
+        }
+    </cms:admin_add_css>
+    <cms:admin_add_js>
+        $(function(){
+            var iframe_name = 'k-iframe-' + Math.floor(Math.random()*1000001);
+            var form = $('<form />', { id: 'k-relation-form', action: '', method: 'POST', style: 'display:none' });
+            var input = $('<input />', { id: '__k_relation_ids__', name: '__k_relation_ids__', type: 'hidden' });
+            form.append(input).appendTo($('body'));
+
+            $( ".k-relation-ex" ).each(function(index){
+                var field = $(this);
+                var list = field.find('ul');
+                var btn_remove = field.find('.btn.remove');
+                var btn_add = field.find('.btn.add');
+                var input_ids = field.find('.k-relation-ids');
+
+                list.on( "click", "a", function( e ) {
+                    $(this).toggleClass('selected');
+                    e.preventDefault();
+                    if( list.find('a.selected').length ){
+                        btn_remove.removeClass("disabled");
+                    }
+                    else{
+                        btn_remove.addClass("disabled");
+                    }
+                });
+
+                list.bind( '_refresh', function(){
+                    var str_ids = '';
+                    var sep = '';
+                    $(this).find('a').each(function(i, selected) {
+                        str_ids += sep + $(this).attr( "data-id" )
+                        sep = ',';
+                    });
+                    input_ids.val( str_ids );
+                });
+
+                btn_remove.click(function(){
+                    list.find('a.selected').each(function(i, selected) {
+                        $(this).closest('li').remove();
+                    });
+                    list.trigger('_refresh');
+
+                    return false;
+                });
+
+                // modal callbacks
+                var modal_before_open = function() {
+                    window.KRelation = {
+                        callBack: function( content, exit_code ){
+                            if( exit_code=='exit_save' ){
+                                var arr = jQuery.parseJSON(content);
+
+                                if(arr.length){
+
+                                    var html = '';
+                                    $.each(arr, function( key, val ){
+                                        html += '<li class="icon-item col col-"><img src="<cms:show k_admin_link />addons/uk-icons/icons/' + val.name + '.svg"/><a href="#" title="' + val.name + '" data-id="' + val.id + '"></a></li>';
+                                    });
+
+                                    list.append(html);
+                                    list.trigger('_refresh');
+                                }
+                            }
+
+                            // close modal
+                            modal_after_close();
+                        }
+                    };
+
+                    // prep form
+                    form.attr( "action", btn_add.attr('data_relation_src') );
+                    form.attr( "target", iframe_name );
+                    input.val( input_ids.val() );
+                };
+
+                var modal_open = function() {
+                    form.submit();
+                };
+
+                var modal_after_close = function() {
+                    window.KRelation = null;
+                    $.magnificPopup.close();
+                };
+
+                COUCH.bindPopupIframe( btn_add, modal_before_open, modal_after_close, "mosaic-iframe", true, iframe_name, modal_open );
+            });
+        });
+    </cms:admin_add_js>
+</cms:if>

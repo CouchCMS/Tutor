@@ -1,0 +1,89 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class /> icon-list-single-row uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-column-4" data-uk-grid>
+                    <div class="uk-grid-item-match uk-width-1-1@m uk-flex uk-flex-bottom">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-center uk-margin-remove-bottom uk-width-xlarge uk-margin-auto uk-h2" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <hr class="el-divider uk-text-center uk-margin-small-top uk-margin-remove-bottom uk-divider-small" data-uk-scrollspy-class />
+                            <div class="el-body uk-text-center uk-margin-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />
+                            </div>
+                            <div class="el-icon-list uk-text-center uk-margin-small-top uk-margin-bottom uk-width-xxlarge uk-margin-auto" data-uk-scrollspy-class>
+                                <ul class="el-icon-list-items icons uk-child-width-auto uk-flex-center uk-grid-small" data-uk-grid>
+                                    <cms:show_repeatable 'items' token='pb_icon_blocks' startcount='0'>
+                                        <li>
+                                            <div class="uk-text-center uk-flex-center uk-flex-nowrap uk-grid-xsmall" data-uk-grid>
+                                                <div class="el-icon-list-icon uk-width-auto uk-text-primary"><span data-uk-icon="<cms:show item_icon />"></span></div>
+                                                <div class="el-icon-list-text">
+                                                    <cms:if "<cms:strlen item_link />">
+                                                        <a class="uk-link-muted" href="<cms:show item_link />"<cms:if item_new_window> target="_blank"</cms:if>>
+                                                            <cms:show item_body />
+                                                        </a>
+                                                    <cms:else />
+                                                        <cms:show item_body />
+                                                    </cms:if>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </cms:show_repeatable>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-expand@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <div class="el-map uk-margin-remove-top uk-margin-remove-bottom"<cms:if map_link> style="height: 350px"</cms:if>>
+                                <cms:if map_link>
+                                    <iframe width="100%" height="100%" frameborder="0" style="border:0;" src="<cms:show map_link />"></iframe>
+                                <cms:else />
+                                    <img src="<cms:show k_site_link />uploads/image/tutor/600/google-map.png" />
+                                </cms:if>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-column-2 uk-grid-item-match <cms:show pb_second_column_width /> uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <div class="el-form">
+                                <div class="el-form-main uk-margin-remove-top uk-margin-remove-bottom uk-width-xlarge uk-margin-auto uk-margin-auto-right@m" data-uk-scrollspy-class="uk-animation-slide-right">
+                                    <cms:form name=form_name class="uk-form-stacked uk-grid-small" anchor="<cms:if form_anchor>1<cms:else />0</cms:if>" data-uk-grid="" method="post">
+                                        <cms:embed 'pb/misc/theme/process_email_form.html' />
+
+                                        <div class="el-form-field text name uk-width-1-1">
+                                            <div class="uk-form-controls">
+                                                <cms:input type="text" name="name" id="name" class="uk-input uk-form-large uk-form-width-auto<cms:if k_error_name> uk-form-danger</cms:if>" required="<cms:if field_name_required>1</cms:if>" "<cms:if field_name_required>required=\"required\" </cms:if>" placeholder="<cms:show field_name_placeholder />" simple_mode='1'/>                                                                                                                                
+                                            </div>
+                                            <cms:if k_error_name><span class="uk-label uk-label-danger"><cms:show k_error_name /></span></cms:if>
+                                        </div>
+                                        <div class="el-form-field text email uk-width-1-1">
+                                            <div class="uk-form-controls">
+                                                <cms:input type="text" name="email" id="email" validator="email"  class="uk-input uk-form-large uk-form-width-auto<cms:if k_error_email> uk-form-danger</cms:if>" required='1' "required=\"required\"" placeholder="<cms:show field_email_placeholder />" simple_mode='1'/>                                
+                                            </div>
+                                            <cms:if k_error_email><span class="uk-label uk-label-danger"><cms:show k_error_email /></span></cms:if>
+                                        </div>
+                                        <div class="el-form-field textarea message uk-width-1-1">
+                                            <div class="uk-form-controls">
+                                                <cms:input type="textarea" name="message" id="message" class="uk-textarea uk-form-large uk-form-width-auto<cms:if k_error_message> uk-form-danger</cms:if>" required='1' "required=\"required\"" placeholder="<cms:show field_message_placeholder />" rows="4" simple_mode='1'/>
+                                            </div>
+                                            <cms:if k_error_message><span class="uk-label uk-label-danger"><cms:show k_error_message /></span></cms:if>
+                                        </div>
+                                        <div class="el-form-field submit submit uk-width-1-1">
+                                            <div class="uk-flex-middle uk-flex-left" data-uk-grid>
+                                                <div class="uk-width-expand">
+                                                    <button class="uk-button uk-width-1-1 uk-button-primary uk-button-large" type="submit" name="submit"><cms:show field_button_text /></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </cms:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

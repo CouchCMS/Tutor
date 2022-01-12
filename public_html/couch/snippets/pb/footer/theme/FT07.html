@@ -1,0 +1,43 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class /> footer uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:0,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section uk-section-xsmall uk-padding-remove-top uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-column-4" data-uk-grid>
+                    <div class="uk-grid-item-match uk-width-1-1@m uk-flex uk-flex-bottom">
+                        <div class="el-panel uk-panel">
+                            <hr class="el-divider uk-text-left uk-margin-remove-top uk-margin-remove-bottom" data-uk-scrollspy-class />
+                        </div>
+                    </div>
+                </div>
+                <div class="el-grid uk-grid-collapse" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-expand@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <div class="el-subnav uk-margin-top uk-margin-remove-bottom" data-uk-scrollspy-class>
+                                <ul class="uk-subnav uk-flex-left@m uk-flex-center" data-uk-margin>
+                                    <cms:show_repeatable 'items'>
+                                        <li>
+                                            <a href="<cms:show item_link />"<cms:if item_target eq 'new_window'> target="_blank"<cms:else_if item_target eq 'scroll_to' /> data-uk-scroll</cms:if>>
+                                                <cms:show item_text />
+                                            </a>
+                                        </li>
+                                    </cms:show_repeatable>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-column-2 uk-grid-item-match uk-width-expand@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <div class="el-body uk-text-right@m uk-text-center uk-margin-top uk-margin-remove-bottom uk-width-large uk-margin-auto uk-margin-auto-left@m uk-text-small uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:if "<cms:strlen link />">
+                                    <a href="<cms:show link />"><cms:show copyright /></a>
+                                <cms:else />
+                                    <cms:show copyright />
+                                </cms:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

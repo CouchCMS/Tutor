@@ -1,0 +1,10 @@
+.relation-body{max-width:100%;border:1px solid #c0c0c0;border-radius:3px;background-color:#fff;}
+.relation-body.input-hint{border-radius:3px 3px 0 0;}
+.scroll-relation{position:relative;max-height:256px;border-radius:2px;overflow-y:auto;}
+.scroll-relation>.mCustomScrollBox{border-radius:2px;}
+.checklist{padding:0;list-style-type:none;}
+.checklist>li:nth-child(even)>label{background-color:#fcfcfc;}
+.checklist>li:last-child>label{border-radius:0 0 2px 2px;}
+.input-hint .checklist>li:last-child>label{border-radius:0;}
+.checklist>li>label{display:block;overflow:hidden;line-height:32px;padding:0 16px 0 8px;white-space:nowrap;text-overflow:ellipsis;font-size:13px;font-weight:normal;}
+.checklist>li>label:hover,.checklist>li>label.selected{background-color:#f4f4f4;}

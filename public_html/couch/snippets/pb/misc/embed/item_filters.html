@@ -1,0 +1,5 @@
+<cms:show_repeatable 'items_filter_items'>
+    <cms:if "<cms:strlen filter_value />">
+        | <cms:show filter_text  />=<cms:show filter_value  />
+    </cms:if>
+</cms:show_repeatable>

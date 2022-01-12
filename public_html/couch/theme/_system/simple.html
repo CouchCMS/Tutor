@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1, minimal-ui" name="viewport"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="noindex" name="robots"/>
+    <title><cms:show title /></title>
+    <link href="<cms:show k_system_theme_link />includes/admin/main.css?v=<cms:show k_cms_build />" rel="stylesheet"/>
+
+    <cms:admin_css_files>
+        <link rel="stylesheet" href="<cms:show k_css_file />" type="text/css" media="screen"/>
+    </cms:admin_css_files>
+
+    <style>
+        <cms:admin_css />
+    </style>
+
+    <script src="<cms:show k_system_theme_link />includes/svg4everybody.min.js?v=<cms:show k_cms_build />"></script>
+
+    <link href="<cms:show k_system_theme_link />includes/admin/images/favicon.ico" rel="shortcut icon"/>
+</head>
+<body id="simple-page">
+    <div id="simple-wrap">
+        <cms:if show_logo >
+            <cms:render 'logo' id='simple-logo' />
+        </cms:if>
+
+        <cms:show content />
+
+        <script src="<cms:show k_admin_link />includes/jquery-3.x.min.js?v=<cms:show k_cms_build />"></script>
+        <script src="<cms:show k_system_theme_link />includes/bootstrap.min.js?v=<cms:show k_cms_build />"></script>
+        <script src="<cms:show k_system_theme_link />includes/admin/simple.js?v=<cms:show k_cms_build />"></script>
+
+        <script type="text/javascript">
+            //<![CDATA[
+            <cms:admin_js />
+            //]]>
+        </script>
+    </div>
+</body>
+</html>

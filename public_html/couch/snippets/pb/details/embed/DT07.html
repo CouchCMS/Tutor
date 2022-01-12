@@ -1,0 +1,14 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' required='1' />
+<cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+
+<cms:repeatable name='items' label='Progress Bars' stacked_layout='0' order='3'>
+    <cms:editable name='item_progress_percentage' type='text' label='Percentage' validator='mypb::check_percentage' required='1' col_width='100' />
+    <cms:editable name='item_progress_label' type='text' label='Label' />
+</cms:repeatable>
+
+<cms:editable name='row_image' type='row' label='Image' order='4' collapsed='0'>
+    <cms:editable name='image' type='image' label='&nbsp;' show_preview='1' preview_width='150' required='1' />
+    <cms:editable name='image_alt' label='Image Alt Text' type='text' />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='0' has_bgcolor='Default=default | Muted=muted | Secondary=secondary' has_colwidth='0'></cms:embed>

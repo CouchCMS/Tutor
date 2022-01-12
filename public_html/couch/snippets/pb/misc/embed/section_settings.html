@@ -1,0 +1,29 @@
+<cms:editable name='grp_section_settings' type='group' label='Section Settings' order='100' collapsed='1'>
+    <cms:editable name='row_section_settings' type='row' order='1' >
+        <cms:if has_padding>
+            <cms:editable name='section_padding_top' label='Top Padding' type='dropdown' class='col-xs-4 col-md-2 child' order='1' opt_values='Large=large | XLarge=xlarge | Medium=medium | Small=small | XSmall=xsmall | No Padding=no_padding' opt_selected='large' group='row_section_settings' />
+            <cms:editable name='section_padding_bottom' label='Bottom Padding' type='dropdown' class='col-xs-4 col-md-2 child' order='2' opt_values='Large=large | XLarge=xlarge | Medium=medium | Small=small | XSmall=xsmall | No Padding=no_padding' opt_selected='large' group='row_section_settings' />
+        </cms:if>
+
+        <cms:if has_bgcolor>
+            <cms:editable name='section_bg_color' label='Background Color' type='dropdown' opt_values=has_bgcolor order='3' class='col-xs-4 col-md-2' group='row_section_settings' />
+        </cms:if>
+        
+        <cms:if has_colwidth>
+            <cms:editable name='second_column_width' label='Second Column Width' type='dropdown' class='col-xs-4 col-md-2' order='4' opt_values='50%=1-2 | 16%=1-6 | 20%=1-5 | 25%=1-4 | 33%=1-3 | 40%=2-5 | 60%=3-5 | 66%=2-3 | 75%=3-4 | 80%=4-5 | 83%=5-6' opt_selected='1-2' group='row_section_settings' />
+        </cms:if>
+
+        <cms:editable name='section_id' label='Section ID' type='text' class='col-xs-4 col-md-2 col-break' order='98' />
+        <cms:editable name='section_class' label='Section Class' type='text' class='col-xs-4 col-md-2' order='99' />
+        <cms:editable name='section_caching' label='Caching' type='dropdown' class='col-xs-4 col-md-2' order='100' opt_values='Always=always | Skip Posted Forms=skip_post | Never=never' opt_selected='always' />
+    </cms:editable>
+</cms:editable>
+
+<!-- js/css -->
+<cms:editable name='section_css_global' type='message' order='-1000' >
+    <style>
+        .field.child label{color:#777;}
+        .k_row  .select{width:100%;}
+    </style>
+</cms:editable>
+

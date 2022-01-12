@@ -1,0 +1,18 @@
+<cms:editable name='row_image' type='row' label='Image' order='1' collapsed='0'>
+    <cms:editable name='image' type='image' label='&nbsp;' show_preview='1' preview_width='150' required='1' />
+    <cms:editable name='image_caption' label='Image Caption' type='text' class='col-xs-12 col-md-6' />
+    <cms:editable name='image_alt' label='Image Alt Text' type='text' class='col-xs-12 col-md-6' />
+
+    <cms:editable name='image_show_link' type='checkbox' label='Show Link?' opt_values='Yes=yes' class='col-xs-12' />
+    <cms:func _into='my_cond' image_show_link=''>
+        <cms:if "<cms:is 'yes' in=image_show_link />">show<cms:else />hide</cms:if>
+    </cms:func> 
+    <cms:editable name='image_link' label='Link' type='text' class='col-xs-4 col-md-4' not_active=my_cond />
+    <cms:editable name='image_link_open_in' label='Open link in' type='dropdown' class='col-xs-4 col-md-2' opt_values='Popup=popup | Same Window=same | New Window=new' opt_selected='popup' not_active=my_cond />
+    <cms:func _into='my_cond' image_show_link='' image_link_open_in=''>
+        <cms:if "<cms:is 'yes' in=image_show_link />" && image_link_open_in eq 'popup'>show<cms:else />hide</cms:if>
+    </cms:func>
+    <cms:editable name='image_link_popup_type' label='Popup Type' type='dropdown' class='col-xs-4 col-md-2' opt_values='Default=default | Image=image | Video=video | Iframe=iframe' opt_selected='default' not_active=my_cond />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

@@ -1,0 +1,43 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative uk-light uk-background-cover uk-background-center-center uk-background-norepeat uk-background-primary" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-fade&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}" data-uk-img data-src="<cms:show k_site_link />uploads/image/tutor/covers/header-background.jpg">
+    <div class="el-container uk-container uk-position-relative uk-container-small">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-center uk-margin-remove-bottom uk-h2" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <div class="el-image uk-text-center uk-margin-medium-top uk-margin-remove-bottom uk-position-relative" data-uk-scrollspy-class data-uk-lightbox="toggle: a.el-popup-link"">
+                                <a class="el-popup-link" href="<cms:show image_link />">                                            
+                                    <img src="<cms:show image />" alt="<cms:show image_alt />" class="uk-border-rounded">
+                                    <span class="video-play-button"><span></span></span>
+                                </a>                
+                            </div>
+                            <div class="el-icon-blocks">
+                                <div class="uk-text-center uk-margin-large-top uk-margin-remove-bottom">
+                                    <ul class="el-icon-blocks-items uk-grid-match uk-child-width-1-1 uk-child-width-1-2@m uk-grid-medium uk-flex-center" data-uk-grid>
+                                        <cms:show_repeatable 'items' token='pb_icon_blocks' startcount='0'>
+                                            <li>
+                                                <div class="el-icon-blocks-item item-<cms:show k_count /> uk-panel uk-margin-remove-first-child uk-width-expand@m uk-text-left" data-uk-scrollspy-class>
+                                                    <div class="uk-child-width-expand uk-grid-small" data-uk-grid>
+                                                        <div class="uk-width-auto">
+                                                            <span class="el-icon-blocks-icon uk-icon-button uk-margin-remove-top uk-margin-remove-bottom uk-button-primary" style="width: 56px;height: 56px">
+                                                            <span data-uk-icon="icon: <cms:show item_icon />; ratio: 1.4;" style="width: 28px;height: 28px"></span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="uk-margin-remove-first-child">
+                                                            <div class="el-icon-blocks-body uk-text-muted uk-margin-small-top"><cms:show item_body /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </cms:show_repeatable>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

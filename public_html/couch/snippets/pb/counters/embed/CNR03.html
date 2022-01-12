@@ -1,0 +1,19 @@
+<cms:editable name='row_image' type='row' label='Image' order='1' collapsed='0'>
+    <cms:editable name='image' type='image' label='&nbsp;' show_preview='1' preview_width='150' required='1' />
+    <cms:editable name='image_alt' label='Image Alt Text' type='text' />
+</cms:editable>
+
+<cms:repeatable name='items' label='Items' stacked_layout='1' order='2'>
+    <cms:editable name='item_title' type='text' label='Counter' validator='non_negative_integer' />
+    <cms:editable name='item_body' type='textarea' height='80' label='Body' />
+</cms:repeatable>
+
+<cms:editable name='title' label='Title' type='textarea' height='60' order='3' required='1' />
+
+<cms:editable name='row_buttons' type='row' label='Button' order='4' collapsed='0'>
+    <cms:editable name='button_text' type='text' label='Button Text' class='col-xs-4 col-md-2' />
+    <cms:editable name='button_link' type='text' label='Link' class='col-xs-4 col-md-2' />
+    <cms:editable name='button_target' label='Target' type='dropdown' opt_values='Same Window=default | New Window=new_window | Scroll To=scroll_to' opt_selected='default' class='col-xs-4 col-md-2' />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='0' has_colwidth='1'></cms:embed>

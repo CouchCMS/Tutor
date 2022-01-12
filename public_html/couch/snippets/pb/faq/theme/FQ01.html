@@ -1,0 +1,29 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-center uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-h2" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <div class="el-accordion uk-margin-medium-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto" data-uk-scrollspy-class>
+                                <ul class="uk-orig" data-uk-accordion="">
+                                    <cms:show_repeatable 'items' token='pb_icon_blocks' startcount='0'>
+                                        <li<cms:if k_count eq '0'> class="uk-open"</cms:if>>
+                                            <a class="uk-accordion-title" href="#">
+                                                <span class="uk-text-middle"><cms:show item_title /></span>
+                                            </a>
+                                            <div class="uk-accordion-content">
+                                                <div class="el-accordion-content"><cms:show item_body /></div>
+                                            </div>
+                                        </li>
+                                    </cms:show_repeatable>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class /> footer uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:0,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-top">
+                        <div class="el-panel uk-panel">
+                            <h3 class="el-title uk-text-center uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto uk-h3" data-uk-scrollspy-class><span></span><cms:show title /></h3>
+                            <div class="el-social uk-margin-medium-top uk-margin-remove-bottom" data-uk-scrollspy-class>
+                                <ul class="uk-flex-center uk-flex-middle uk-grid-small" data-uk-grid>
+                                    <cms:show_repeatable 'social_icons'>
+                                        <li><a class="uk-icon-button uk-button-primary" href="<cms:show item_link />"<cms:if item_new_window> target="_blank"</cms:if> style="width: 47px;height: 47px"><span data-uk-icon="icon: <cms:show item_icon />;  ratio: 1.3;" style="width: 26px;height: 26px"></span></a></li>
+                                    </cms:show_repeatable>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

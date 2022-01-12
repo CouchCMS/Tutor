@@ -1,0 +1,18 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' required='1' />
+<cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+
+<cms:repeatable name='items' label='Contacts' order='3'>
+    <cms:editable name='item_icon' type='icon' width='32' label='Icon' col_width='120' />
+    <cms:editable name='item_body' type='textarea' height='50' label='Text' />
+    <cms:editable name='item_link' type='text' label='Link' />
+    <cms:editable name='item_new_window' type='checkbox' label='New Window?' col_width='120' opt_values='Yes=yes' />
+</cms:repeatable>
+
+<cms:editable name='row_map' type='row' label='Google Map' order='4' collapsed='0'>
+    <cms:editable name='map_api_key' label='Key' type='text' required='0' class='col-xs-12' order='0' />
+    <cms:editable name='map_address' label='Address' type='text' required='1' class='col-xs-12' order='1' />
+    <cms:editable name='map_latitude' label='Latitude' type='text' validator='decimal' class='col-xs-4 col-md-2' order='2' />        
+    <cms:editable name='map_longitude' label='Longitude' type='text' validator='decimal' class='col-xs-4 col-md-2' order='3' />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='1'></cms:embed>

@@ -1,0 +1,66 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' required='1' />
+<cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+
+<cms:repeatable name='items' label='Contacts' order='3'>
+    <cms:editable name='item_icon' type='icon' width='32' label='Icon' col_width='120' />
+    <cms:editable name='item_body' type='textarea' height='50' label='Text' />
+    <cms:editable name='item_link' type='text' label='Link' />
+    <cms:editable name='item_new_window' type='checkbox' label='New Window?' col_width='120' opt_values='Yes=yes' />
+</cms:repeatable>
+
+<cms:editable name='row_map' type='row' label='Google Map' order='4' collapsed='0'>
+    <cms:editable name='map_api_key' label='Key' type='text' required='0' class='col-xs-12' order='0' />
+    <cms:editable name='map_address' label='Address' type='text' required='1' class='col-xs-12' order='1' />
+    <cms:editable name='map_latitude' label='Latitude' type='text' validator='decimal' class='col-xs-4 col-md-2' order='2' />        
+    <cms:editable name='map_longitude' label='Longitude' type='text' validator='decimal' class='col-xs-4 col-md-2' order='3' />
+</cms:editable>
+
+<cms:editable name='grp_form' type='group' label='Form' order='5' collapsed='0'>
+    <cms:editable name='row_form_settings' type='row' order='1'>
+        <cms:editable name='form_name' label='Form Name' desc='should be unique on the page' type='text' validator='title_ready' validator_msg="title_ready=<cms:localize 'user_name_restrictions' />" maxlength='255' class='col-xs-4 col-md-4' order='2' />
+        <cms:editable name='form_anchor' type='checkbox' label='Output Form Anchor?' opt_values='Yes=yes' class='col-xs-4' order='3' />
+    </cms:editable>
+    
+    <cms:editable name='row_form_fields' type='row' order='2' label='Fields' collapsed='0'>
+        <cms:editable name='field_name_placeholder' label='Name Field Placeholder' type='text' maxlength='255' class='col-xs-4 col-md-2' order='1' />
+        <cms:editable name='field_name_required' label='Required?' type='checkbox' opt_values='Yes=yes' class='col-xs-4 col-md-2' order='2' />
+        <cms:editable name='field_email_placeholder' label='Email Field Placeholder' type='text' maxlength='255' class='col-xs-4 col-md-2 col-break' order='3' />
+        <cms:editable name='field_message_placeholder' label='Message Field Placeholder' type='text' maxlength='255' class='col-xs-4 col-md-2' order='4' />
+        <cms:editable name='field_button_text' label='Submit Button Text' type='text' maxlength='255' class='col-xs-4 col-md-2 col-break' order='12' />
+    </cms:editable>
+    
+    <!-- Confirmation Messages -->
+    <cms:editable name='row_form_confirmation' type='row' order='3' label='Confirmation Messages' collapsed='1'>
+        <cms:editable name='form_success_action' label='On Successful Submission' type='dropdown' class='col-xs-4 col-md-4 col-break' order='1' opt_values='Show Message=show_message | Redirect=redirect' opt_selected='show_message' />
+        <cms:func _into='my_cond' form_success_action=''>
+            <cms:if form_success_action='show_message'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='form_success_message' label='Success Message' type='textarea' required='1' height='80' class='col-xs-12 col-break' order='2' not_active=my_cond />
+        <cms:func _into='my_cond' form_success_action=''>
+            <cms:if form_success_action='redirect'>show<cms:else />hide</cms:if>
+        </cms:func>
+        <cms:editable name='form_success_redirect' label='Redirect URL' type='text' required='1' class='col-xs-12 col-break' order='3' not_active=my_cond />
+        <cms:editable name='form_error_message' label='Error Message' type='text' class='col-xs-12 col-break' order='4' />
+    </cms:editable>
+
+    <!-- EMail settings -->
+    <cms:editable name='row_form_email' type='row' order='4' label='Email Settings' collapsed='1'>
+        <cms:editable name='form_email_info' label='&nbsp;' type='pb_list_fields' class='col-xs-12' order='0' />
+        <cms:editable name='form_email_to' label='To' type='text' class='col-xs-12' required='1' order='1' />
+        <cms:editable name='form_email_from' label='From' desc='use an email of your site\'s domain' type='text' class='col-xs-12' required='1' order='2' />
+        <cms:editable name='form_email_subject' label='Subject' type='text' class='col-xs-12' order='3' />
+        <cms:editable name='form_email_reply_to' label='Reply-To' type='text' class='col-xs-12' order='4' />
+        <cms:editable name='form_email_bcc' label='Bcc' type='text' class='col-xs-12' order='5' />
+        <cms:editable name='form_email_message' label='Message' type='textarea' class='col-xs-12' required='1' order='6' />
+        <cms:editable name='form_email_debug' type='checkbox' label='Set Debug On?' opt_values='Yes=yes' class='col-xs-12' order='7' />
+    </cms:editable>
+</cms:editable>
+
+<!-- js/css -->
+<cms:editable name='section_css' type='message' order='-100'>
+    <style>
+        #k_label_f_form_email_info, #k_label_f_form_email_info+br {display:none;}
+    </style>
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='1'></cms:embed>

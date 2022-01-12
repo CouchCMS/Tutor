@@ -1,0 +1,7 @@
+<cms:admin_add_js>
+    $(function(){
+        if( window.parent && window.parent.UKIcons && window.parent.UKIcons.callBack ){
+            window.parent.UKIcons.callBack('<cms:show k_selected_icon />');
+        }
+    });
+</cms:admin_add_js>

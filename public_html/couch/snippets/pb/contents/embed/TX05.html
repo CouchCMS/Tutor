@@ -1,0 +1,13 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' />
+
+<cms:editable name='body_use_richtext' type='checkbox' label='Use Richtext Editor?' opt_values='Yes=yes' order='2' />
+<cms:func _into='my_cond' body_use_richtext=''>
+    <cms:if "<cms:is 'yes' in=body_use_richtext />">hide<cms:else />show</cms:if>
+</cms:func>
+<cms:editable name='body' label='Body' type='textarea' height='200' order='3' not_active=my_cond  />
+<cms:func _into='my_cond' body_use_richtext=''>
+    <cms:if "<cms:is 'yes' in=body_use_richtext />">show<cms:else />hide</cms:if>
+</cms:func>
+<cms:editable name='body_text_rich' label='Body' type='richtext' toolbar='medium' height='200' order='4' not_active=my_cond />
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

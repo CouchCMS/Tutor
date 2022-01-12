@@ -1,0 +1,34 @@
+<cms:editable name='grp_items' type='group' label='Items' order='1' collapsed='0'>
+    <cms:editable name='row_settings_items' type='row' order='1'>
+        <cms:editable name='items_link_open_in' label='Open link in' type='dropdown' class='col-xs-4 col-md-2' order='1' opt_values='Same Window=same | New Window=new' opt_selected='same' />
+    </cms:editable>
+
+    <cms:repeatable name='items' label='Items' stacked_layout='1' order='2'>
+        <cms:editable name='item_tab_icon' type='icon' label='Tab Icon' width='50' />
+        <cms:editable name='item_tab_title' type='text' label='Tab Title' />
+        <cms:editable name='item_title' type='text' height='80' label='Title' />
+        <cms:editable name='item_body' type='textarea' height='80' label='Body' />
+        <cms:editable name='item_list_msg' label='List' type='message'>
+            <font color="#777">Separate individual items with a blank line.</font>
+        </cms:editable>
+        <cms:editable name='item_list' type='textarea' height='160' label='&nbsp;' />
+        <cms:editable name='item_link' type='text' label='Link' />
+        <cms:editable name='item_link_text' type='text' label='- Link Text' />
+    </cms:repeatable>
+</cms:editable>
+
+<cms:editable name='row_image' type='row' label='Image' order='2' collapsed='0'>
+    <cms:editable name='image' type='image' label='&nbsp;' show_preview='1' preview_width='150' required='1' />
+    <cms:editable name='image_alt' label='Image Alt Text' type='text' />
+</cms:editable>
+
+<!-- js/css -->
+<cms:editable name='section_css' type='message' order='-100' >
+    <style>
+        #k_label_f_items, #k_label_f_items+br {display:none;}
+        .k_element_item_link_text label
+        { color:#777;}
+    </style>
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='0' has_bgcolor='Default=default | Muted=muted | Primary=primary | Secondary=secondary' has_colwidth='0'></cms:embed>

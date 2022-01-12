@@ -1,0 +1,24 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative uk-container-xsmall">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <cms:if "<cms:strlen title />"><h3 class="el-title uk-text-left uk-margin-remove-bottom uk-h3" data-uk-scrollspy-class><span></span><cms:show title /></h3></cms:if>
+                            <cms:if "<cms:not body_use_richtext />">
+                                <cms:if "<cms:strlen body />"><div class="el-body uk-text-left uk-margin-top uk-margin-remove-bottom uk-column-1-1@m" data-uk-scrollspy-class>
+                                    <cms:show body />
+                                </div></cms:if>
+                            <cms:else />
+                                <cms:if "<cms:not_empty body_text_rich />"><div class="el-body uk-text-left uk-margin-top uk-margin-remove-bottom uk-column-1-1@m" data-uk-scrollspy-class>
+                                    <cms:show body_text_rich />
+                                </div></cms:if>
+                            </cms:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

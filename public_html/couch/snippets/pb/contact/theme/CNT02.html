@@ -1,0 +1,50 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class />  uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-fade&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid uk-grid-large" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-2@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <div class="el-map uk-margin-remove-top uk-margin-remove-bottom" data-uk-scrollspy-class="uk-animation-slide-left"<cms:if map_link> style="height: 300px"</cms:if>>
+                                <cms:if map_link>
+                                    <iframe width="100%" height="100%" frameborder="0" style="border:0;" src="<cms:show map_link />"></iframe>
+                                <cms:else />
+                                    <img src="<cms:show k_site_link />uploads/image/tutor/600/google-map.png" />
+                                </cms:if>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-column-2 uk-grid-item-match <cms:show pb_second_column_width /> uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-left uk-margin-remove-bottom uk-width-xlarge uk-margin-auto-right uk-h2" data-uk-scrollspy-class="uk-animation-slide-right"><span></span><cms:show title /></h2>
+                            <hr class="el-divider uk-text-left uk-margin-small-top uk-margin-remove-bottom uk-divider-small" data-uk-scrollspy-class="uk-animation-slide-right" />
+                            <div class="el-body uk-text-left uk-margin-top uk-margin-remove-bottom uk-width-xxlarge uk-margin-auto-right uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class="uk-animation-slide-right">
+                                <cms:show body />
+                            </div>
+                            <div class="el-icon-list uk-text-left uk-margin-top uk-margin-remove-bottom uk-width-xlarge uk-margin-auto-right" data-uk-scrollspy-class="uk-animation-slide-right">
+                                <ul class="el-icon-list-items icons uk-child-width-1-1@m uk-flex-left uk-grid-small" data-uk-grid>
+                                    <cms:show_repeatable 'items' token='pb_icon_blocks' startcount='0'>
+                                        <li>
+                                            <div class="uk-text-left uk-flex-left uk-flex-nowrap uk-grid-xsmall" data-uk-grid>
+                                                <div class="el-icon-list-icon uk-width-auto uk-text-primary"><span data-uk-icon="<cms:show item_icon />"></span></div>
+                                                <div class="el-icon-list-text">
+                                                    <cms:if "<cms:strlen item_link />">
+                                                        <a class="uk-link-muted" href="<cms:show item_link />"<cms:if item_new_window> target="_blank"</cms:if>>
+                                                            <cms:show item_body />
+                                                        </a>
+                                                    <cms:else />
+                                                        <cms:show item_body />
+                                                    </cms:if>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </cms:show_repeatable>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class /> testimonial-text uk-position-relative <cms:show pb_section_bg_color />" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left-medium&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match uk-width-1-1@m">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-center uk-margin-remove-bottom uk-width-xlarge uk-margin-auto uk-h2" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <div class="el-body uk-text-center uk-margin-top uk-margin-remove-bottom uk-width-xlarge uk-margin-auto uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />            
+                            </div>
+                            <div class="el-image-blocks slider">
+                                <div class="uk-text-center uk-margin-medium-top uk-margin-remove-bottom">
+                                    <div class="el-slider-arrow-out-large" data-uk-slider="velocity: 1; autoplay: true; autoplay-interval: 4000; pause-on-hover: true; clsActivated: ;">
+                                        <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
+                                            <div class="uk-slider-container">
+                                                <ul class="el-image-blocks-items uk-grid-match uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-2@m uk-child-width-1-3@l uk-child-width-1-3@xl uk-grid-medium uk-slider-items">
+                                                    <cms:show_repeatable 'items' token='pb_icon_blocks' startcount='0'>
+                                                        <li class="el-image-blocks-item item-<cms:show k_count />  uk-transition-toggle">
+                                                            <div class="el-image-blocks-unit uk-grid-item-match">
+                                                                <div class="el-image-blocks-unit-layout uk-cover-container uk-padding-xsmall uk-grid-item-match" data-uk-scrollspy-class>
+                                                                    <div class="el-image-blocks-image-component uk-grid-item-match uk-width-1-1">
+                                                                        <div class="el-trans uk-grid-item-match">
+                                                                            <div class="el-anim uk-grid-item-match">
+                                                                                <div class="el-sizer uk-grid-item-match uk-cover-container uk-flex-middle"  data-aspect="0.4">
+                                                                                    <div class="el-image-blocks-image color uk-position-cover uk-blend-normal" style="background-color:rgba(255,255,255,0);"></div>
+                                                                                    <div class="el-image-blocks-image-contents uk-panel uk-margin-remove-first-child uk-width-xxlarge uk-margin-auto uk-text-center">
+                                                                                        <div class="el-image-blocks-icon uk-cover-container uk-border-circle uk-margin-auto uk-margin-remove-bottom" style="width: 96px;height: 96px">
+                                                                                            <div class="el-background-image uk-position-cover uk-background-cover uk-background-top-center" data-uk-img data-src="<cms:show item_image />"><img src="<cms:show item_image />" alt="<cms:show item_title />, <cms:show item_subtitle />" /></div>
+                                                                                        </div>
+                                                                                        <div class="el-image-blocks-body uk-text-muted uk-text-italic uk-margin-medium-top uk-margin-remove-bottom"><cms:show item_body /></div>
+                                                                                        <h4 class="el-image-blocks-title uk-h5 uk-margin-top uk-margin-remove-bottom"><span></span><cms:show item_title /> - <cms:show item_subtitle /></h4>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </cms:show_repeatable>
+                                                </ul>
+                                            </div>
+                                            <a class="el-image-blocks-slider-arrow-left uk-position-center-left-out uk-animation-fade uk-position-small uk-slidenav-large" href="#" data-uk-slidenav-previous data-uk-slider-item="previous"></a>
+                                            <a class="el-image-blocks-slider-arrow-right uk-position-center-right-out uk-animation-fade uk-position-small uk-slidenav-large" href="#" data-uk-slidenav-next data-uk-slider-item="next"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

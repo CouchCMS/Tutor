@@ -1,0 +1,31 @@
+<div id="<cms:show section_id />" class="el-section <cms:show section_class /> blockquote uk-position-relative uk-background-cover uk-background-center-center uk-background-norepeat uk-background-default" data-uk-scrollspy="{&quot;target&quot;:&quot;[data-uk-scrollspy-class]&quot;,&quot;cls&quot;:&quot;uk-animation-slide-left&quot;,&quot;delay&quot;:100,&quot;repeat&quot;:false}" data-uk-img data-src="<cms:show k_site_link />uploads/image/tutor/covers/details1-background.jpg">
+    <div class="el-container uk-container uk-position-relative">
+        <div class="el-section-inner uk-section <cms:show pb_section_padding /> uk-flex">
+            <div class="el-section-box uk-width-1-1 uk-grid-item-match">
+                <div class="el-grid uk-grid-large uk-flex-row-reverse" data-uk-grid>
+                    <div class="el-column-1 uk-grid-item-match <cms:show pb_second_column_width /> uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <div class="el-image uk-text-center@m uk-text-left uk-margin-medium-top uk-margin-bottom" data-uk-scrollspy-class="uk-animation-slide-right">
+                                <img src="<cms:show image />" alt="<cms:show image_alt />" class="uk-border-rounded">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="el-column-2 uk-grid-item-match uk-width-expand@m uk-flex-middle">
+                        <div class="el-panel uk-panel">
+                            <h2 class="el-title uk-text-left uk-margin-remove-bottom uk-width-xlarge uk-margin-auto-right uk-h2" data-uk-scrollspy-class><span></span><cms:show title /></h2>
+                            <div class="el-body uk-text-left uk-margin-top uk-margin-remove-bottom uk-text-muted uk-column-1-1@m" data-uk-scrollspy-class>
+                                <cms:show body />
+                            </div>
+                            <blockquote class="el-blockquotes uk-margin-top uk-margin-remove-bottom uk-text-left" data-uk-scrollspy-class>
+                                &quot;<cms:show blockquotes_text />&quot;                
+                                <footer>
+                                    <cms:show blockquotes_author /><cms:if "<cms:strlen blockquotes_source />"> <cite><cms:show blockquotes_source /></cite></cms:if>
+                                </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

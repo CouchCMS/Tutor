@@ -1,0 +1,28 @@
+<cms:editable name='title' label='Title' type='textarea' height='60' order='1' required='1' />
+<cms:editable name='body' label='Body' type='textarea' height='120' order='2'  />
+
+<cms:editable name='row_buttons' type='row' label='Buttons' order='3' collapsed='0'>
+    <cms:editable name='button_text' type='text' label='Button Text' class='col-xs-4 col-md-2' />
+    <cms:editable name='button_link' type='text' label='Link' class='col-xs-4 col-md-2' />
+    <cms:editable name='button_target' label='Target' type='dropdown' opt_values='Same Window=default | New Window=new_window | Scroll To=scroll_to' opt_selected='default' class='col-xs-4 col-md-2' />
+    <cms:editable name='show_second_button' type='checkbox' label='Show Second Button?' opt_values='Yes=yes' class='col-xs-3 col-md-2 col-break' />
+    
+    <cms:func _into='my_cond' show_second_button=''>
+        <cms:if "<cms:is 'yes' in=show_second_button />">show<cms:else />hide</cms:if>
+    </cms:func>
+    <cms:editable name='button2_text' type='text' label='Button Text' class='col-xs-4 col-md-2 col-break' not_active=my_cond />
+    <cms:editable name='button2_link' type='text' label='Link' class='col-xs-4 col-md-2' not_active=my_cond />
+    <cms:editable name='button2_target' label='Target' type='dropdown' opt_values='Same Window=default | New Window=new_window | Scroll To=scroll_to' opt_selected='default' class='col-xs-4 col-md-2' not_active=my_cond />
+</cms:editable>
+
+<cms:editable name='row_image' type='row' label='Image' order='4' collapsed='0'>
+    <cms:editable name='image' type='image' label='&nbsp;' show_preview='1' preview_width='150' required='1' />
+    <cms:editable name='image_alt' label='Image Alt Text' type='text' />
+    <cms:editable name='image_show_video' type='checkbox' label='Show Video Popup?' opt_values='Yes=yes' />
+    <cms:func _into='my_cond' image_show_video=''>
+        <cms:if "<cms:is 'yes' in=image_show_video />">show<cms:else />hide</cms:if>
+    </cms:func>
+    <cms:editable name='image_link' label='Video Link (YouTube)' type='text' not_active=my_cond />
+</cms:editable>
+
+<cms:embed 'pb/misc/embed/section_settings.html' has_padding='1' has_bgcolor='0' has_colwidth='0'></cms:embed>

@@ -1,0 +1,17 @@
+<cms:admin_add_js>
+    function k_bulk_upload_result( res ){
+        var msg = $.trim( res );
+        if( msg.length ){
+            alert( "ERROR!\n\n" + msg );
+        }
+        window.location.reload( true );
+    }
+
+    $(function(){
+        COUCH.bindGallerySelect();
+
+        COUCH.bindPopupIframe($(".plupload-gallery"), null, null, "plupload-iframe");
+
+        COUCH.bindPopupGallery();
+    });
+</cms:admin_add_js>

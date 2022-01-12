@@ -1,0 +1,157 @@
+<cms:func 'pb_menu_logo' for=''>
+    <a href="<cms:show menu_logo_link />" class="uk-navbar-item uk-logo">
+        <cms:if menu_logo_type='image'>
+            <img alt="<cms:show menu_logo_alt />" src="<cms:if for='mobile' && menu_logo_image_mobile><cms:show menu_logo_image_mobile /><cms:else /><cms:show menu_logo_image /></cms:if>">
+            <img class="uk-logo-inverse" alt="<cms:show menu_logo_alt />" src="<cms:if for='mobile' && menu_logo_image_mobile><cms:show menu_logo_image_mobile /><cms:else /><cms:show menu_logo_image_2 /></cms:if>">
+        <cms:else_if menu_logo_type='svg' />
+            <img alt="<cms:show menu_logo_alt />" src="<cms:if for='mobile' && menu_logo_svg_mobile><cms:show menu_logo_svg_mobile /><cms:else /><cms:show menu_logo_svg /></cms:if>">
+            <img class="uk-logo-inverse" alt="<cms:show menu_logo_alt />" src="<cms:if for='mobile' && menu_logo_svg_mobile><cms:show menu_logo_svg_mobile /><cms:else /><cms:show menu_logo_svg_2 /></cms:if>">
+        <cms:else />
+            <cms:show menu_logo_text />
+        </cms:if>
+    </a>
+</cms:func>
+
+<cms:func 'pb_menu_nav'>
+    <cms:if menu_for eq 'multiple_pages_site'>
+        <cms:call '_pb_menu_nav_pages' />
+    <cms:else />
+        <cms:call '_pb_menu_nav_rr' />
+    </cms:if>
+</cms:func>
+
+<cms:func '_pb_menu_nav_rr'>
+    <ul class="uk-navbar-nav" data-uk-scrollspy-nav="closest: li; scroll: true; offset:80;">
+        <cms:show_repeatable 'menu_items' startcount='0'>
+            <li>
+                <a href="<cms:show menu_link />"<cms:if menu_new_window> target="_blank"</cms:if>><cms:show menu_text /></a>
+            </li>
+        </cms:show_repeatable>
+    </ul>
+</cms:func>
+
+<cms:func '_pb_menu_nav_pages'>
+    <cms:nested_pages masterpage='index.php' extended_info='1'>
+        <cms:if k_level_start >
+            <cms:if k_level='0'>
+                <ul class="uk-navbar-nav" data-uk-scrollspy-nav="closest: li; scroll: true; offset:80;">
+            <cms:else_if k_level='1' />
+                <ul class="uk-navbar-dropdown-nav uk-nav-parent-icon <cms:show pb_menu_dropdown_is_dark />" data-uk-nav>
+            <cms:else_if k_level='2' />
+                <ul class="uk-nav-sub">
+            <cms:else />
+                <ul>
+            </cms:if>
+        </cms:if>
+
+        <cms:if k_element_start >
+            <cms:if k_level='0' && k_nestedpage_name='home'><cms:php>global $CTX; $CTX->set( 'k_menu_link', K_SITE_URL );</cms:php><cms:if my_is_home><cms:php>global $CTX; $CTX->set( 'k_is_active', 1 );</cms:php></cms:if></cms:if>
+            <cms:if k_level='0' && k_total_children>
+                <cms:set my_menu_dividers='1' />
+                <cms:nested_pages masterpage='index.php' childof=k_nestedpage_name depth='1'>
+                    <cms:if k_nestedpage_title eq '---divider---'>
+                        <cms:incr my_menu_dividers />
+                    </cms:if>
+                </cms:nested_pages>
+
+                <li class="uk-parent<cms:if k_is_active> uk-active</cms:if>">
+                    <a href="<cms:show k_menu_link />"><cms:show k_menu_title />
+                        <span data-uk-icon="icon: chevron-down" class="uk-margin-small-left uk-icon"></span>
+                    </a>
+                    <div class="uk-navbar-dropdown <cms:show pb_menu_dropdown_background /><cms:if my_menu_dividers gt '1'> uk-navbar-dropdown-width-<cms:show my_menu_dividers /></cms:if>">
+                        <div class="uk-navbar-dropdown-grid uk-child-width-1-<cms:show my_menu_dividers />" data-uk-grid>
+                            <div>
+            <cms:else_if k_level='1' && k_total_children />
+                <li class="uk-parent<cms:if k_is_active> uk-active</cms:if>">
+                    <a href="<cms:show k_menu_link />"><cms:show k_menu_title /></a>
+            <cms:else_if k_level='1' && k_nestedpage_title eq '---divider---' />
+                   </ul>
+                </div>
+                <div>
+                    <ul class="uk-navbar-dropdown-nav uk-nav-parent-icon <cms:show pb_menu_dropdown_is_dark />" data-uk-nav>        
+            <cms:else />
+                <li class="<cms:if k_is_active>uk-active</cms:if>">
+                    <a href="<cms:show k_menu_link />"><cms:show k_menu_title /></a>
+            </cms:if>
+        </cms:if>
+
+        <cms:if k_element_end >
+            <cms:if k_level='0' && k_total_children>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <cms:else_if k_level='1' && k_nestedpage_title eq '---divider---' />    
+            <cms:else />
+                </li>
+            </cms:if>
+        </cms:if>
+
+        <cms:if k_level_end ></ul></cms:if>
+    </cms:nested_pages>
+</cms:func>
+
+<cms:func 'pb_menu_hamburger'>
+    <a class="uk-navbar-toggle" href="#el-mobile" data-uk-toggle>
+        <div data-uk-navbar-toggle-icon></div>
+    </a>
+
+    <div id="el-mobile" data-uk-offcanvas="mode:<cms:show menu_mobile_animation />; overlay:true;">
+        <div class="uk-offcanvas-bar uk-flex uk-flex-column <cms:show pb_menu_bg_color_mobile />">
+            <button class="uk-offcanvas-close uk-close-large" type="button" data-uk-close></button>
+
+            <div class="uk-margin-auto-vertical">
+                <div class="uk-margin-top">
+                    <cms:if menu_for eq 'multiple_pages_site'>
+                        <cms:call '_pb_menu_hamburger_pages' />
+                    <cms:else />
+                        <cms:call '_pb_menu_hamburger_rr' />
+                    </cms:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</cms:func>
+
+<cms:func '_pb_menu_hamburger_rr'>
+    <cms:set accordion="<cms:not menu_mobile_items_expanded />" />
+
+    <ul class="<cms:if "<cms:not accordion />">uk-nav </cms:if>uk-nav-primary<cms:if menu_mobile_items_centered> uk-nav-center</cms:if><cms:if accordion> uk-nav-parent-icon</cms:if>" data-uk-scrollspy-nav="closest: li; scroll: true; offset:80;"<cms:if accordion> data-uk-nav</cms:if>>
+        <cms:show_repeatable 'menu_items' startcount='0'>
+            <li>
+                <a href="<cms:show menu_link />"<cms:if menu_new_window> target="_blank"</cms:if>><cms:show menu_text /></a>
+            </li>
+        </cms:show_repeatable>
+    </ul>
+</cms:func>
+
+<cms:func '_pb_menu_hamburger_pages'>
+    <cms:set accordion="<cms:not menu_mobile_items_expanded />" />
+
+    <cms:nested_pages masterpage='index.php' extended_info='1'>
+        <cms:if k_level_start >
+            <cms:if k_level='0'>
+                <ul class="<cms:if "<cms:not accordion />">uk-nav </cms:if>uk-nav-primary<cms:if menu_mobile_items_centered> uk-nav-center</cms:if><cms:if accordion> uk-nav-parent-icon</cms:if>" data-uk-scrollspy-nav="closest: li; scroll: true; offset:80;"<cms:if accordion> data-uk-nav</cms:if>>
+            <cms:else_if k_level='1' />
+                <ul class="uk-nav-sub">
+            <cms:else />
+                <ul>
+            </cms:if>
+        </cms:if>
+
+        <cms:if k_element_start >
+            <cms:if k_level='0' && k_nestedpage_name='home'><cms:php>global $CTX; $CTX->set( 'k_menu_link', K_SITE_URL );</cms:php><cms:if my_is_home><cms:php>global $CTX; $CTX->set( 'k_is_active', 1 );</cms:php></cms:if></cms:if>
+            <cms:if k_level='1' && k_nestedpage_title eq '---divider---'>
+            <cms:else />
+                <li class="<cms:if k_level='0' && k_total_children>uk-parent </cms:if><cms:if k_is_active> uk-active</cms:if>">
+                    <a href="<cms:show k_menu_link />"><cms:show k_menu_title /></a>
+            </cms:if>        
+        </cms:if>
+
+        <cms:if k_element_end ><cms:if k_level='1' && k_nestedpage_title eq '---divider---'><cms:else /></li></cms:if></cms:if>
+
+        <cms:if k_level_end >
+            </ul>
+        </cms:if>
+    </cms:nested_pages>
+</cms:func>

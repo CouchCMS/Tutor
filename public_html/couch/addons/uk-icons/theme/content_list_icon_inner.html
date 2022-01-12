@@ -1,0 +1,33 @@
+<div class="icon-list">
+    <ul class="row">
+        <cms:related_pages
+                masterpage       = k_template_name
+                id               = k_selected_pageids
+                folder           = k_selected_foldername
+                orderby          = k_selected_orderby
+                order            = k_selected_order
+                custom_field     = k_selected_custom_field
+                paginate         = '1'
+                limit            = k_selected_limit
+                show_unpublished = '0'
+                show_future_entries = '1'
+                page_name        = "<cms:if k_selected_exclude>NOT <cms:show k_selected_exclude /></cms:if>"
+                start_on         = k_selected_start_on
+                stop_before      = k_selected_stop_before
+                base_link        = k_route_link
+                token            = k_cur_token
+            >
+
+            <cms:if k_paginated_bottom >
+                <cms:set my_paginator="<cms:render 'paginator' />" 'parent' />
+            </cms:if>
+
+            <li class="icon-item col-xs-6 col-sm-4 col-md-3">
+                <div><img src="<cms:show k_admin_link />addons/uk-icons/icons/<cms:show k_page_name />.svg"/></div>
+                <div class="title"><cms:show k_page_title /></div>
+                <a href="#" data-src="<cms:show k_page_name />"></a>
+            </li>
+
+        </cms:related_pages>
+    </ul>
+</div>
